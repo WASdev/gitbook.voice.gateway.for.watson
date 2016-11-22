@@ -34,28 +34,21 @@ These instructions are for setting up Voice Gateway for Watson on your own Docke
     ```
     docker login
     ```
- 1. Pull the latest Docker images of the SIP Orchestrator (`cso`) and Media Relay (`cmr`):
+ 1. Pull the latest Docker images of the SIP Orchestrator (`voice-gateway-so`) and Media Relay (`voice-gateway-mr`):
 
     ```
-  docker pull bpulito/ibm-cognitive-gw:cso.latest
+  docker pull ibmcom/voice-gateway-so:beta
 
-  docker pull bpulito/ibm-cognitive-gw:cmr.latest
+  docker pull ibmcom/voice-gateway-mr:beta
 
     ```
-    Or, pull a particular version number:
 
-    ```  
-  docker pull bpulito/ibm-cognitive-gw:cso.0.1.4
+ 1. Go to the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson) and clone the **quickstart/docker-compose.yml** file to your local machine.
 
-  docker pull bpulito/ibm-cognitive-gw:cmr.0.1.6
-    ```
- 1. Go to the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson) and clone the docker-compose.yml file from the _quickstart_ directory to your local machine.
-
-  This sample _docker-compose.yml_ file is configured with some default services that you can use for testing, and it points to the latest images. If you pull and run a specific image version number, you'll need to modify the _docker-compose.yml_ image sections for the `cso` and `cmr` images to point to that version.
-
+  This sample **docker-compose.yml** file is configured to point to the beta images.
   **??? Minimum config for beta?**
 
- 1. In the same directory where you cloned the _docker-compose.yml_ file, create a .env file and set the `EXTERNAL_IP` to localhost as follows: **??? Can we better explain which parts the commands below do?**
+ 1. In the same directory where you cloned the **docker-compose.yml** file, create a .env file and set the `EXTERNAL_IP` to localhost as follows: **??? Can we better explain which parts the commands below do?**
 
    ```
  touch .env
@@ -76,7 +69,7 @@ These instructions are for setting up Voice Gateway for Watson on your own Docke
 
 #### What to do next
 
-Now you can call the voice gateway from the [SIP client that you configured](#prerequisites). Because the voice gateway is configured to run on port 5060 and localhost, you'll need to call this SIP URI: **sip:watson@localhost:5060**  Make sure you are running the SIP client on the same machine where the voice gateway containers are running.
+Now you can call the voice gateway from the [SIP client that you configured](#prerequisites). Because the voice gateway is configured to run on port 5060 and localhost, you'll need to call this SIP URI: **sip:watson@localhost:5060**  Make sure that the SIP client is running on the same machine where the voice gateway containers are running.
 
 #### Firewall considerations
 

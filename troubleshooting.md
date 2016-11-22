@@ -10,12 +10,16 @@ Consider how each of these components work together as you attempt to isolate th
 
 Like other configuration for the voice gateway, logging and tracing levels are configured as Docker environment variables, as described in [Configuration environment variables for the voice gateway](config.md).
 
+#### Logging environment variables
+
 The following Docker environment variables are used to control the log level in the SIP Orchestrator and the Media Relay container:
 
 | Environment variable | Default | Details |
 | --- |--- | ---|
-| LOG_LEVEL | audit | This is the log level for the SIP Orchestrator. Valid values include off, fatal, severe, warning, fine, finest, and all.  |
-|RTP_RELAY_LOGLEVEL| INFO | This is the log level for the Media Relay. Set the bunyan log to INFO, DEBUG, or TRACE |
+| LOG_LEVEL | audit | This is the log level for the SIP Orchestrator. Valid values are off, fatal, severe, warning, fine, finest, and all.  |
+|RTP_RELAY_LOGLEVEL| INFO | This is the log level for the Media Relay. Valid values are INFO, DEBUG, or TRACE.|
+
+#### Tracing environment variables
 
 These Docker environment variables for the SIP Orchestrator are used to control various aspects of the tracing:
 
@@ -23,17 +27,19 @@ These Docker environment variables for the SIP Orchestrator are used to control 
 | --- |--- | ---|
 | ENABLE_AUDIT_MESSAGES | true | Set to false to disable audit messages. |
 | ENABLE_TRANSCRIPTION_AUDIT_MESSAGES | false | Set to true to enable audit transcription messages. |
-| LATENCY_REPORTING_THRESHOLD | 20 | Threshold in ms for reporting round trip Conversation latency. |
-| RELAY_LATENCY_REPORTING_THRESHOLD | 1000 | Threshold in ms for reporting media relay related latencies. |
+| LATENCY_REPORTING_THRESHOLD | 20 | Threshold in milliseconds for reporting round-trip conversation latency. |
+| RELAY_LATENCY_REPORTING_THRESHOLD | 1000 | Threshold in milliseconds for reporting Media Relay latencies. |
 
-The log files for the SIP orchestrator container are in the **logs** directory. This directory contains the **messages.log** file and, if the LOG_LEVEL is set to at least `fine`, the **trace.log** file, which contains additional details. To copy the log files off of the SIP Orchestrator container, run the following commands:
+#### Finding and viewing log files
+
+The log files for the SIP Orchestrator container are in the **logs** directory. This directory contains the **messages.log** file. If the LOG_LEVEL is set to at least `fine`, the directory also contains the **trace.log** file, which contains additional details. To copy the log files off of the SIP Orchestrator container, run the following commands:
 
 ```
 cf ic cp cgw.sip.orchestrator:/logs/messages.log .
 cf ic cp cgw.sip.orchestrator:/logs/trace.log .
 ```
 
-Similarly, the log file for the Media Relay is in the **logs** directory on its container. This directory contains a **trace.log** file, which you can best view using Bunyan. **??? Is this what we're suggesting beta customers to do?** To copy the **trace.log** file off of the Media Relay container, run the following command:
+Similarly, the main log file for the Media Relay, **trace.log**, is in the **logs** directory on its container. The **trace.log** file is best viewed by using [Bunyan](https://github.com/trentm/node-bunyan), especially when the log level is set to `DEBUG`. To copy the **trace.log** file off of the Media Relay container, run the following command:
 
 ```
 cf ic cp cgw.sip.orchestrator:/logs/trace.log .
