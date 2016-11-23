@@ -11,8 +11,8 @@ These instructions are for setting up Voice Gateway for Watson on your own Docke
 * Create a [Docker Hub](https://hub.docker.com/) account so that you can access the Docker images of the SIP Orchestrator and the Media Relay.
 
 * Sign up for IBM Bluemix and create the following Watson services:
- * [Watson Speech To Text](https://console.ng.bluemix.net/catalog/services/speech-to-text)
- * [Watson Text To Speech](https://console.ng.bluemix.net/catalog/services/text-to-speech)
+ * [Watson Speech to Text](https://console.ng.bluemix.net/catalog/services/speech-to-text)
+ * [Watson Text to Speech](https://console.ng.bluemix.net/catalog/services/text-to-speech)
  * [Watson Conversation](https://console.ng.bluemix.net/catalog/services/conversation)
 
  **Important:** Be sure to [program your Conversation service](https://www.ibm.com/watson/developercloud/doc/conversation/t_dialog_build.shtml) with at least a catch-all response so that you can test the gateway.
@@ -57,7 +57,7 @@ The command outputs a list of images similar to the following example:
  registry.ng.bluemix.net/myrepo/cgw.media.relay      latest  d2c2c3f446e8   2 days ago  212.4 MB
  registry.ng.bluemix.net/myrepo/cgw.sip.orchestrator latest  01269ea75e08   3 days ago  341.3 MB
  ```
- 1. In the same directory, open the **docker.env** file, which is where you configure the voice gateway by setting Docker environment variables. For example, specify your user name and password for the Watson Speech To Text, Text To Speech, and Conversation services. For a complete listing of all variables, see [Configuration environment variables](config.md).
+ 1. In the same directory, open the **docker.env** file, which is where you configure the voice gateway by setting Docker environment variables. For example, specify your user name and password for the Watson Speech to Text, Text to Speech, and Conversation services. For a complete listing of all variables, see [Configuration environment variables](config.md).
 
  **??? Minimum config for beta? Can the .env have all values set except for the service credentials?**
 

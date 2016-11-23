@@ -2,7 +2,7 @@
 
 When troubleshooting, it's important to understand that the Voice Gateway for Watson is made up of two Docker containers, the SIP Orchestrator and the Media Relay.
 * The SIP Orchestrator handles all the SIP call signaling and the interactions with the Watson Conversation or Dialog services. It also communicates with the Media Relay through a web socket over which it sets up the media session and send and receives text utterances.
-* The Media Relay is responsible for processing the audio media streams and communicates directly with the Watson Speech to Text and Watson Text To Speech services. The Media Relay also sources and sinks the RTP audio streams to and from the caller.
+* The Media Relay is responsible for processing the audio media streams and communicates directly with the Watson Speech to Text and Watson Text to Speech services. The Media Relay also sources and sinks the RTP audio streams to and from the caller.
 
 Consider how each of these components work together as you attempt to isolate the problem. For more detail, see [Architecture](about.md#architecture).
 

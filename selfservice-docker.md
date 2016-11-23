@@ -11,8 +11,8 @@ These instructions are for setting up Voice Gateway for Watson on your own Docke
 * Create a [Docker Hub](https://hub.docker.com/) account so that you can access the Docker images of the SIP Orchestrator and the Media Relay.
 
 * Sign up for IBM Bluemix and create the following Watson services:
- * [Watson Speech To Text](https://console.ng.bluemix.net/catalog/services/speech-to-text)
- * [Watson Text To Speech](https://console.ng.bluemix.net/catalog/services/text-to-speech)
+ * [Watson Speech to Text](https://console.ng.bluemix.net/catalog/services/speech-to-text)
+ * [Watson Text to Speech](https://console.ng.bluemix.net/catalog/services/text-to-speech)
  * [Watson Conversation](https://console.ng.bluemix.net/catalog/services/conversation)
 
  **Important:** Be sure to [program your Conversation service](https://www.ibm.com/watson/developercloud/doc/conversation/t_dialog_build.shtml) with at least a catch-all response so that you can test the gateway.

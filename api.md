@@ -14,14 +14,14 @@ The following tables outline all the state variables that are supported by the v
 
 | State variable name | Value type | Description | Default |
 | -------------- | ------ | ----------- | ---------- |
-| cgwHangUp | Yes | Informs the voice gateway to hangup the call after the included text response is played back to the caller| - |
-| cgwTransfer | Yes | Informs the voice gateway to initiate a transfer after the included text response is played back to the caller| - |
-| cgwTransferTarget | SIP or telephone URI | Identifies the transfer to endpoint (e.g. tel:+18883334444) | - |
-| cgwTransferHeader | user defined | Defines a custom header in an outgoing SIP REFER message during a transfer. The custom header value is defined by the cgwSIPTransferHeaderVal state variables | - |
-| cgwTransferHeaderVal | user defined | Defines the value of a custom header in an outgoing SIP REFER message during a transfer. The custom header is defined by the cgwTransferHeader state variables | - |
+| cgwHangUp | Yes | Informs the voice gateway to hangup the call after the included text response is played back to the caller.| - |
+| cgwTransfer | Yes | Informs the voice gateway to initiate a transfer after the included text response is played back to the caller.| - |
+| cgwTransferTarget | SIP or telephone URI | Identifies the transfer to endpoint (e.g. tel:+18883334444). | - |
+| cgwTransferHeader | user defined | Defines a custom header in an outgoing SIP REFER message during a transfer. The custom header value is defined by the cgwSIPTransferHeaderVal state variables. | - |
+| cgwTransferHeaderVal | user defined | Defines the value of a custom header in an outgoing SIP REFER message during a transfer. The custom header is defined by the cgwTransferHeader state variables. | - |
 | cgwPreResponseTimeoutCount | time in ms | Forces a wait for a new utterance before playing back the response. Can be used to collect DTMF digits or a multi-utterance response. | - |
 | cgwPostResponseTimeoutCount | time in ms | Time to wait for a new utterance after the response is played back to the caller. If timeout occurs the conversation will receive a text update with the word "cgwPostResponseTimeout" to indicate a timeout occurred.| - |
-| cgwPauseSTT | Yes / No | Informs the voice gateway to pause STT processing. When applied, the same value is used in all subsequent transactions, unless a new request arrives that overrides the existing value | No |
+| cgwPauseSTT | Yes / No | Informs the voice gateway to pause STT processing. When applied, the same value is used in all subsequent transactions, unless a new request arrives that overrides the existing value. | No |
 | cgwAllowBargeIn | Yes / No | Informs the voice gateway whether or not barge-in is allowed. When applied, the same value is used in all subsequent transactions, unless a new request arrives that overrides the existing value | Yes |
 | cgwAllowDTMF | Yes / No | Informs the voice gateway whether or not DTMF is allowed. When applied, the same value is used in all subsequent transactions, unless a new request arrives that overrides the existing value. When set to 'No', DTMFs are ignored| Yes |
 | cgwForceNoInputTurn | Yes / No | Force a new turn with no input from the CMR. This is needed for very long turns when the conversation wishes to turn on MusicOnHold before initiating the long transaction.| No |

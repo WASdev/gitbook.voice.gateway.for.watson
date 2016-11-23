@@ -59,22 +59,22 @@ The following table lists all Docker environment variables that can be used to c
 | WATSON_RELAY_SDP_ADDRESS | localhost | Address to use in the Answer SDP for SIP. |
 | RTP_UDP_PORT_RANGE | '16384-16394'|Port range for UDP, set as a String. |
 | CLUSTER_WORKERS | 1 | Number of Cluster Workers to spawn. Set to 0 for NumCPUS-1. |
-| WATSON_STT_USER | n/a | User name for the Watson Speech To Text service. |
-| WATSON_STT_PASSWORD | n/a | Password for the Watson Speech To Text service.|
-| WATSON_STT_ENDPOINT | wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize| Watson Speech To Text service endpoint.|
-| WATSON_STT_EXTRAS | n/a | Extra values for the Watson Speech To Text service. Do not set. |
-| WATSON_STT_MODEL | en_US_NarrowbandModel | [Watson Speech To Text model](https://www.ibm.com/watson/developercloud/doc/speech-to-text/input.shtml#models). The default narrowband model is best for offline decoding of telephone speech. |
-| WATSON_STT_OPTOUT | true | Opt out of saving data that passes through the Speech To Text service on Watson servers.|
-| WATSON_STT_SILENCE | 500 | Speech To Text silence duration. Used to determine when to start the STT latency timer, which is stopped when a final utterance is received.  |
-| WATSON_STT_MAXALTERNATIVES | 1 | Speech To Text Number of speech recognition alternatives to return |
-| WATSON_STT_CONFIDENCE_SCORE_THRESHOLD | 0 | Confidence threshold of messages from the Speech To Text service. Messages with a confidence score that is under the threshold will not be used as a response. The default value of 0 means that all responses will be used. The recommended values are between 0 and 1.|
+| WATSON_STT_USER | n/a | User name for the Watson Speech to Text service. |
+| WATSON_STT_PASSWORD | n/a | Password for the Watson Speech to Text service.|
+| WATSON_STT_ENDPOINT | wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize| Watson Speech to Text service endpoint.|
+| WATSON_STT_EXTRAS | n/a | Extra values for the Watson Speech to Text service. Do not set. |
+| WATSON_STT_MODEL | en_US_NarrowbandModel | [Watson Speech to Text model](https://www.ibm.com/watson/developercloud/doc/speech-to-text/input.shtml#models). The default narrowband model is best for offline decoding of telephone speech. |
+| WATSON_STT_OPTOUT | true | Opt out of saving data that passes through the Speech to Text service on Watson servers.|
+| WATSON_STT_SILENCE | 500 | Speech to Text silence duration. Used to determine when to start the STT latency timer, which is stopped when a final utterance is received.  |
+| WATSON_STT_MAXALTERNATIVES | 1 | Speech to Text Number of speech recognition alternatives to return |
+| WATSON_STT_CONFIDENCE_SCORE_THRESHOLD | 0 | Confidence threshold of messages from the Speech to Text service. Messages with a confidence score that is under the threshold will not be used as a response. The default value of 0 means that all responses will be used. The recommended values are between 0 and 1.|
 | WATSON_STT_MODEL_CUSTOMIZATION_ID | n/a | Used to set a custom language model for recognition. |
-| WATSON_STT_PROFANITY_FILTER | true | Indicates whether profanity is filtered on the transcripts that come from the Watson Speech To Text service.|
+| WATSON_STT_PROFANITY_FILTER | true | Indicates whether profanity is filtered on the transcripts that come from the Watson Speech to Text service.|
 | WATSON_STT_SMART_FORMATTING | false | Indicates whether dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses are to be converted into more readable, conventional representations in the final transcript of a recognition request. |
-| WATSON_TTS_USER | n/a | User name for the Watson Text To Speech service.|
-| WATSON_TTS_PASSWORD | n/a | Password for the Watson Text To Speech service.|
-| WATSON_TTS_URL | sdk default| Watson Text To Speech service endpoint URL.|
-| WATSON_TTS_VOICE | en_US_AllisonVoice | Voice used by the Watson Text To Speech service.|
+| WATSON_TTS_USER | n/a | User name for the Watson Text to Speech service.|
+| WATSON_TTS_PASSWORD | n/a | Password for the Watson Text to Speech service.|
+| WATSON_TTS_URL | sdk default| Watson Text to Speech service endpoint URL.|
+| WATSON_TTS_VOICE | en_US_AllisonVoice | Voice used by the Watson Text to Speech service.|
 | WATSON_TTS_MODEL_CUSTOMIZATION_ID | n/a | Used to set a custom voice model for text to speech |
 | WATSON_ENERGY_BARGEIN_DURATION | 1500  | Speech utterance duration before a barge-in occurs. Used to prevent noise from causing a barge-in |
 | WATSON_ENERGY_BARGEIN_ENABLED | false | Enable or disable the media relay using energy detection for barge-in |

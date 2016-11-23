@@ -6,4 +6,3 @@ IBM&reg; WebSphere&reg;  Connect Voice Gateway for Watson&trade; is deployed as 
 The following guides will help you quickly get started with a basic configuration for your chosen implementation and deployment location.
  * [Setting up a self-service agent on IBM Containers for Bluemix](self-service-bmix.md)
  * [Setting up a self-service agent on Docker Engine](selfservice-docker.md)
- * [Setting up an agent assistant](https://github.ibm.com/real-time-projects/cognitive.gateway/wiki/z2_Beta-docs:-Setting-up-the-voice-gateway#setting-up-an-agent-assistant)

@@ -35,7 +35,7 @@ This diagram shows how the voice gateway orchestrates the various Watson service
 * **Call transfer:** The gateway can be signaled to initiate a transfer from the Watson Conversation service through the use of state variables. To perform the transfer, the gateway uses a SIP REFER as defined in section 6.1 of [RFC 5589](https://tools.ietf.org/html/rfc5589).
 * **Call hang-up:** The gateway can be signaled to terminate a call from the Watson Conversation service through the use of a state variable.
 * **Music on hold:** The gateway can play an audio file that is specified by the Conversation for some period of time or until processing in the Conversation completes.
-* **SSML tagging:** Speech Synthesis Markup Language (SSML) tags are used to control how Text To Speech synthesizes utterances into audio. The gateway supports passing these tags through to Text To Speech when received from the Conversation.
+* **SSML tagging:** Speech Synthesis Markup Language (SSML) tags are used to control how Text to Speech synthesizes utterances into audio. The gateway supports passing these tags through to Text to Speech when received from the Conversation.
 * **Latency auditing:** The gateway monitors latency, which is a key indicator on how well Watson is communicating with a caller. Because the gateway orchestrates several Watson services, it's critical to be able to identify when one of these services is slow to respond, which ultimately results in long voice response delays and unnatural conversations with the caller.
 * **Context mapping:** When transferring out of Watson, the gateway provides a way for the Conversation to specify metadata that gets embedded in the SIP REFER message. The metadata can be used to map context saved during the Watson conversation back to a live agent session.
 * **Audio recording:** The gateway can be configured to record audio conversations in the form of 16-bit, stereo WAV files. These WAV files are stored on a configured volume and must be retrieved through some external means such as ftp. Typically this feature is used to gather training data for the Speech to Text service.
@@ -68,7 +68,7 @@ Voice Gateway for Watson is composed of two separate microservices, the _SIP Orc
 * **Media Relay:** Handles all media processing for the voice gateway
    * Runs on Node.js
    * Processes inbound and outbound RTP audio
-   * Orchestrates Watson Speech To Text (STT) and Text To Speech (TTS) services
+   * Orchestrates Watson Speech to Text (STT) and Text to Speech (TTS) services
    * Built in JavaScript using Node Streams architecture
    * Delivered as a Node Module
    * Configuration via Docker environment variables

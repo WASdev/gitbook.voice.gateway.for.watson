@@ -1,12 +1,16 @@
 # Resources
 
-Want to learn more? We've gathered some helpful links, tools, and other resources related to IBM&reg; WebSphere&reg;  Connect Voice Gateway for Watson&trade;.
+Want to learn more? We've gathered some helpful links, tools, and other resources related to IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade;.
 
 ### Logging and tracing
-* **[Bunyan](https://github.com/trentm/node-bunyan)** - Use the Bunyan command-line tool to easily view Media Relay log files.
+* **[Bunyan](https://github.com/trentm/node-bunyan)** - Use the Bunyan command-line tool to easily view [Media Relay log files](troubleshooting.md#finding-and-viewing-log-files).
 
-### MQTT
-* **[Mosca MQTT Broker](https://github.com/mcollina/mosca)** - An open source MQTT broker that you can configure to capture MQTT messages for real-time transcription.
+### MQTT resources
+* **[Mosca MQTT Broker](https://github.com/mcollina/mosca)** - An open source MQTT broker that you can configure to capture MQTT messages for [real-time transcription](rttconfig.md).
+
+### SIP resources
+* **[Linphone](https://www.linphone.org/)** - An open source SIP client that you can use to test call your self-service agent or agent assistant configuration.
+* **[Twilio](https://www.twilio.com/)** - A cloud-based option for setting up a SIP trunk for self-service agents. For example, you might deploy the voice gateway in IBM Containers for Bluemix and then [set up Twilio elastic SIP trunking](https://www.twilio.com/docs/api/sip-trunking) as part of your architecture.
 
 ### Watson services
 * **[Watson Speech to Text service](https://www.ibm.com/watson/developercloud/doc/speech-to-text/)** - Learn about setting up the Speech to Text service, which transcribes the caller's speech into text for processing in self-service agents and agent assistants.
