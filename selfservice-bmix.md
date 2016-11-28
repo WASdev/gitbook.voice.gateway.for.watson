@@ -1,6 +1,6 @@
 # Setting up a self-service agent on IBM Containers for Bluemix
 
-These instructions are for setting up Voice Gateway for Watson on your own Docker engine or an on-premises installation. For cloud deployments, see [Setting up a self-service agent on IBM Containers for Bluemix](selfservice-bmix.md).
+These instructions are for setting up Voice Gateway for Watson&trade; on IBM&reg; Containers for Bluemix&reg;. To set up the voice gateway on your own Docker engine or an on-premises installation, see [Setting up a self-service agent on Docker Engine](selfservice-docker.md).
 
 #### Prerequisites
 

@@ -81,19 +81,23 @@ The following diagram shows at a high-level how these two microservices combine 
 
 When connecting to a self-service agent through a SIP trunk, you will need to configure you SIP trunk to forward INVITE requests to the voice gateway based on its IP address and SIP port:
 
-![](images/arch-selfservice-sip.PNG)
+![](images/arch-selfservice-sip.png)
+
+**??? When would you use a SIP trunk over an SBC?**
 
 #### Self-service agent architecture when using an SBC
 
 In a self-service agent where communications flow through a session border controller (SBC), you will need to configure the SBC to forward calls to the voice gateway based on its IP address and SIP port. Note that the SBC must stay in the call path to handle SIP REFER messages if an opt-out transfer is required:
 
-![](images/arch-selfservice-sbc.PNG)
+![](images/arch-selfservice-sbc.png)
+
+**??? When would you use an SBC over a SIP trunk? Seems to differ based on if you want to forward to a human call center agent?**
 
 #### Agent assistant architecture
 
 For agent assistants, media for calls is forked out to the voice gateway via the SIPREC protocol. This diagram also shows how transcriptions from the voice gateway can be accessed via an MQTT message broker:
 
-![](images/arch-agentassistant.PNG)
+![](images/arch-agentassistant.png)
 
 ## Supported protocols
 

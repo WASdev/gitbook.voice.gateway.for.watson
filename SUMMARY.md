@@ -8,6 +8,8 @@
   * [Setting up a self-service agent on IBM Containers](selfservice-bmix.md)
   * [Setting up a self-service agent on Docker Engine](selfservice-docker.md)
 * [Customizing and advanced configuration](advancedsetup.md)
+  * [Setting up a SIP trunk for self-service agents](twilio.md)
+  * [Integrating the voice gateway with a contact center](contactctr.md)
   * [Configuring real-time transcription](rttconfig.md)
 * [Troubleshooting](troubleshooting.md)
 * [Reference](reference.md)

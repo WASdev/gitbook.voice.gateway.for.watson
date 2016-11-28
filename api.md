@@ -12,7 +12,7 @@ The following tables outline all the state variables that are supported by the v
 
 ### Variables sent from the Conversation service to the voice gateway
 
-| State variable name | Value type | Description | Default |
+| State variable name | Expected value | Description | Default |
 | -------------- | ------ | ----------- | ---------- |
 | cgwHangUp | Yes | Informs the voice gateway to hangup the call after the included text response is played back to the caller.| - |
 | cgwTransfer | Yes | Informs the voice gateway to initiate a transfer after the included text response is played back to the caller.| - |
@@ -33,9 +33,11 @@ The following tables outline all the state variables that are supported by the v
 
 ### Variables sent from the voice gateway to the Conversation service
 
-Each of these state variables are associated with Docker environment variables in the [voice gateway configuration](config.md). Be sure to set the specified environment variable in the configuration so that the voice gateway sets the value of the state variable. **??? So they don't set a value for these, they only do it in the config?**
+Each of these state variables are associated with Docker environment variables in the [voice gateway configuration](config.md).
 
-| State variable name | Value | Description | Related Docker env variable |
+**Important:** Be sure to set the specified environment variable in the configuration so that the voice gateway passes the state variable to the Conversation service.
+
+| State variable name | Expected value | Description | Related Docker env variable |
 | -------------- | ----- | ----------- |
 | cgwSessionID   | user defined | Custom session ID header pulled from SIP invite. Represents the global session ID used in all voice gateway audit logs related to the session. | CUSTOM_SIP_SESSION_HEADER |
 | cgwSIPCallID | SIP Call-ID | This is the SIP call ID associated with the Conversation. | SEND_SIP_CALL_ID_TO_CONVERSATION |
