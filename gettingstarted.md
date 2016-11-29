@@ -33,11 +33,11 @@ The voice gateway provides the ability to transcribe audio from an active phone 
 
  The voice gateway takes text output from the Watson Speech to Text service and publishes it through MQTT to an external MQTT message broker. Other services can then access the transcription messages in real-time by subscribing on the related topics. A subscriber could for instance run real-time analytics on the transcription or simply archive the transcription.
 
-1. Deploy Voice Gateway for Watson either on Bluemix or in Docker Engine.
+1. Deploy Voice Gateway for Watson either on Bluemix or on your own Docker Engine.
   * [Deploy the voice gateway on IBM Containers for Bluemix](self-service-bmix.md)
   * [Deploy the voice gateway on Docker Engine](selfservice-docker.md)
 
-  Only the Watson Speech to Text service is needed for agent assistants. In the voice gateway configuration, specify your Watson service credentials.
+   Only the Watson Speech to Text service is needed for agent assistants. In the voice gateway configuration, specify your Watson service credentials.
 
   **Important:** To accurately transcribe phone calls, you'll need to train your service with a custom language model for the specific domain, such as healthcare or insurance.
 
@@ -49,4 +49,4 @@ The voice gateway provides the ability to transcribe audio from an active phone 
 
 1. Test the agent-assistant.
 
- You can use an open source [MQTT client](http://mqtt-helper.mybluemix.net/) to subscribe on the MQTT topic that is being published on by the Voice Gateway.  You will need to dial the number that is setup at the SBC to fork media. You will also need to have a callee to answer the call 
+ You can use an open source [MQTT client](http://mqtt-helper.mybluemix.net/) to subscribe on the MQTT topic that is being published on by the Voice Gateway.  You will need to dial the number that is setup at the SBC to fork media. You will also need to have a callee to answer the call
