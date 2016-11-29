@@ -4,7 +4,7 @@ IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; provides a Sessi
 
  * [Ways to use Voice Gateway for Watson](#ways_to_use_voice_gateway_for_watson)
  * [Architectures for each use](#architecture)
- * [Supported protocols](#supported_protocols)
+ * [Supported protocols](#supported-protocols)
 
 ## Ways to use Voice Gateway for Watson
 

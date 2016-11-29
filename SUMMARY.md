@@ -3,7 +3,7 @@
 * [Introduction](README.md)
   * [About Voice Gateway for Watson](about.md)
   * [Architecture](about.md#architecture)
-  * [Supported protocols](about.md#supported_protocols)
+  * [Supported protocols](about.md#supported-protocols)
 * [Getting started](gettingstarted.md)
   * [Setting up a self-service agent on IBM Containers](selfservice-bmix.md)
   * [Setting up a self-service agent on Docker Engine](selfservice-docker.md)
