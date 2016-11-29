@@ -1,4 +1,4 @@
-# Setting up a SIP trunk for self-service agents
+# Setting up a Twilio SIP trunk for self-service agents
 
 For self-service agents, SIP trunks provide one option for forwarding communications from the customer to IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade;. The other option is to set up a session border controller (SBC). **??? When do you use each of these? What can we link to for more info?**
 

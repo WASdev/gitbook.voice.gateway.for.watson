@@ -8,7 +8,7 @@
   * [Deploying on IBM Containers](deploybmix.md)
   * [Deploying on Docker Engine](deploydocker.md)
 * [Customizing and advanced configuration](advanced.md)
-  * [Setting up a SIP trunk for self-service agents](twilio.md)
+  * [Setting up a Twilio SIP trunk](twilio.md)
   * [Integrating with a contact center](contactctr.md)
   * [Configuring real-time transcription](rttconfig.md)
 * [Troubleshooting](troubleshooting.md)
