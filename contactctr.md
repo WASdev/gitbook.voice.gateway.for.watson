@@ -6,9 +6,13 @@ When using the voice gateway to host a self-service agent, in some cases a custo
 * Calls redirected to the voice gateway from an enterprise Interactive Voice Response (IVR) system
 * Calls redirected from the voice gateway to a contact center or IVR system
 
-The voice gateway relies on standard SIP transfer procedures to redirect a call to a contact center using an in-dialog SIP REFER message.
+#### Session border controller as pivot point
 
-**Important!** The call path must include some entity that acts as a pivot-point for the call to catch the SIP REFER and handle the redirect. This pivot point is typically the session border controller, which interfaces with an external SIP trunk and forwards calls to the voice gateway. Enterprise SBCs can typically handle SIP REFER messages received over an existing SIP dialog and use that message to redirect an existing call to the contact center in the enterprise network.
+The voice gateway relies on standard SIP transfer procedures to redirect a call to a contact center using an in-dialog SIP REFER message. The call path must include some entity that acts as a pivot-point for the call to catch the SIP REFER and handle the redirect.
+
+This pivot point is typically the session border controller, which interfaces with an external SIP trunk and forwards calls to the voice gateway. Enterprise SBCs can typically handle SIP REFER messages received over an existing SIP dialog and use that message to redirect an existing call to the contact center in the enterprise network.
+
+#### Call flow from customer to live agent
 <div>
 <div style="float: right; padding-left: 1em; padding-bottom: 1em">
 <h5> Call flow through SBC with transfer to contact center</h5>
@@ -23,7 +27,8 @@ This diagram shows the typical flow of messages related to both setting up a new
 1. The voice gateway initiates a transfer back to the SBC by sending an in-dialog SIP REFER message.
 1. The SBC re-routes call to the contact center automatic call distributor (ACD).
 1. The call is eventually routed to the agent.
-</div>
+
+#### Configuring call transfer
 
 Initiation of the call transfer is completely controlled by the Watson Conversation service through the following state variables:
 

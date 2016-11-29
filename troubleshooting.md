@@ -16,8 +16,8 @@ The following Docker environment variables are used to control the log level in 
 
 | Environment variable | Default | Details |
 | --- |--- | ---|
-| LOG_LEVEL | audit | This is the log level for the SIP Orchestrator. Valid values are off, fatal, severe, warning, fine, finest, and all.  |
-|RTP_RELAY_LOGLEVEL| INFO | This is the log level for the Media Relay. Valid values are INFO, DEBUG, or TRACE.|
+| LOG_LEVEL | audit | The log level for the SIP Orchestrator. Valid values are off, fatal, severe, warning, fine, finest, and all.  |
+|RTP_RELAY_LOGLEVEL| INFO | The log level for the Media Relay. Valid values are INFO, DEBUG, or TRACE.|
 
 #### Tracing environment variables
 
