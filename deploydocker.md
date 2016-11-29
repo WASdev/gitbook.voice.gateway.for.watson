@@ -1,6 +1,6 @@
 # Setting up a self-service agent on Docker Engine
 
-These instructions are for setting up Voice Gateway for Watson&trade; on your own Docker engine or an on-premises installation. For cloud deployments, see [Setting up a self-service agent on IBM Containers for Bluemix](selfservice-bmix.md).
+These instructions are for setting up Voice Gateway for Watson&trade; on your own Docker engine or an on-premises installation. For cloud deployments, see [Deploying the voice gateway on IBM Containers for Bluemix](deploybmix.md).
 
 **Using Docker Machine?** Configuring the gateway on [Docker Machine](https://docs.docker.com/machine/overview/) is slightly different, as noted in the following steps. Windows users should note that Docker for Windows requires 64-bit Windows 10 Pro, so on earlier version of Windows, you must install Docker Machine.
 
@@ -41,19 +41,24 @@ These instructions are for setting up Voice Gateway for Watson&trade; on your ow
 
     ```
 
- 1. Go to the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson) and clone the repository. Once cloned navigate to the repositories **docker** directory where you will find the following two files:
+ 1. Go to the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson) and clone the repository. In the cloned repository on your machine, go to **docker** directory, where you will find the following two files:
   ```
   docker-compose-self-service.yml
   docker-compose-agent-assist.yml
   ```
 
-  These sample **docker-compose.yml** files are configured to point to the latest beta images of the voice gateway.
+  These sample files are preconfigured for each implementation and point to the latest beta images of the voice gateway. You'll need to modify the file for your implementation type to include your Watson service credentials.
 
-  Begin by copying the file related to your type of deployment to a file named docker-compose.yml. You will then need to modify the compose file to add all of your Watson service credentials which were allocated above for Speech To Text, Text To Speech (self-service only) and the Watson Conversation service (self-service only). Each related Docker environment variable that you need to modify will be blank in the compose file. No other configuration is required to get a basic voice gateway running.
+  1. Copy the file related to your type of implementation to a new file named **docker-compose.yml**. Keep the file in the same directory.
+  1. In the new **docker-compose.yml** file, add your credentials for your Watson services. Each Docker environment variable that you need to fill in is blank.
 
-  **Important:** If you are deploying to a public cloud it is highly recommended that you define the whitelisting related variables to prevent Denial of Service attacks. These will be commented out in the docker compose files.
+      **Remember:** Agents assistants require only the Speech to Text service. Self-service agents require that service, plus the Text to Speech and Conversation (or Dialog) services.
 
- 1. In the docker directory where you modified the docker-compose.yml file, create a **.env** file and set the `EXTERNAL_IP` to localhost as follows. These commands assume you are using **vi** for editing but any editor will do:
+      No other configuration is required to get a basic voice gateway running.
+
+  **Important:** If you are deploying to a public cloud, it is highly recommended that you also define the whitelist variables to prevent Denial of Service attacks. By default, these variables are commented out in the Compose files.
+
+ 1. In the directory where you modified the docker-compose.yml file, create a **.env** file and set the `EXTERNAL_IP` to localhost using the following commands. These commands assume you are using **vi** for editing, but you can use any editor:
 
    ```
  touch .env
@@ -65,7 +70,7 @@ These instructions are for setting up Voice Gateway for Watson&trade; on your ow
 
     **Docker Machine only**: Because the voice gateway will be running in a virtual machine, you'll need to determine the IP address of the VM and set it in the .env file. Set it to the IP returned from the `docker-machine ip` command.
 
- 1. Create and start up the containers by running this command:
+ 1. Create and start up the containers by running the following command:
 
     ```
  docker-compose up
@@ -92,4 +97,4 @@ Remember that the voice gateway is processing SIP and RTP media streams on one s
 | Audio from Voice Gateway | IP address of SIP Trunk | Defined by SIP Trunk | Outbound | RTP over UDP |
 | Connect to Watson services | Configured Watson endpoints | 443| Outbound | TCP (Web Sockets and REST) |
 
-Note that typically you will only have to worry about configuring inbound access. Outbound is typically open.
+Note that typically you only have to configure inbound access. Outbound is typically open.
