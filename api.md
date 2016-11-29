@@ -2,7 +2,7 @@
 
 Voice Gateway for Watson is controlled through state variables that are exchanged with the configured Watson Conversation service.
 * **To the gateway:** The Conversation service sends state variables to initiate various actions in the voice gateway.
-* **From the gateway:** Based on Docker environment variables in the configuration, the voice gateway sends various state variables to the Conversation service to pass various headers extracted from the call signaling.
+* **From the gateway:** Based on configured Docker environment variables, the voice gateway sends various state variables to the Conversation service to pass various headers extracted from the call signaling.
 
 The voice gateway assumes that the Conversation service is stateless and that all state is maintained at the voice gateway between exchanges with the Conversation service. This means that for each Conversation "turn" within the context of a single phone call, the state is passed to the conversation and received back from the Conversation.
 
