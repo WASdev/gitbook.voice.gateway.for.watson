@@ -1,7 +1,7 @@
 # Getting started with Voice Gateway for Watson
 IBM&reg; WebSphere&reg;  Connect Voice Gateway for Watson&trade; is deployed as part of an overall architecture that depends on the following factors:
  * **Type of assistance:** Are you implementing a self-service agent or an agent assistant? Learn more about these options and their architectures in [About Voice Gateway for Watson](about.md).
- * **Deployment location:** Where are you deploying the voice gateway? For each implementation, you can either deploy the voice gateway on the cloud using IBM&reg; Containers for Bluemix&reg;, or you can deploy the voice gateway on-premises or in a Docker Engine.
+ * **Deployment location:** Where are you deploying the voice gateway? For each implementation, you can either deploy the voice gateway to the IBM&reg; Containers for Bluemix&reg;, or you can deploy the voice gateway in your own managed Docker Engine.
 
 The following guides will help you quickly get started with a basic configuration for your chosen implementation and deployment location.
 
@@ -9,7 +9,7 @@ The following guides will help you quickly get started with a basic configuratio
 
 To set up a self-service agent, just follow these steps.
 
-1. Deploy Voice Gateway for Watson either on Bluemix or in Docker Engine.
+1. Deploy Voice Gateway for Watson either on Bluemix or in a Docker Engine.
   * [Deploy the voice gateway on IBM Containers for Bluemix](self-service-bmix.md)
   * [Deploy the voice gateway on Docker Engine](selfservice-docker.md)
 1. Set up a SIP trunk or session border controller.
@@ -35,7 +35,7 @@ The voice gateway provides the ability to transcribe audio from an active phone 
   **Important:** To accurately transcribe phone calls, you'll need to train your service with a custom language model for the specific domain, such as healthcare or insurance.
 
 1. Set up the real-time transcription.
- The voice gateway takes text output from the Watson Speech to Text service and publishes it through the included MQTT plug-in to an external MQTT message broker. **??? And then what happens to it?**
+ The voice gateway takes text output from the Watson Speech to Text service and publishes it through the included MQTT plug-in to an external MQTT message broker. Other services can then access the transcription messages in real-time by subscribing on the related topics. A subscriber could for instance run real-time analytics on the transcription or simply archive the transcription.
 
 1. Set up the session border controller (SBC).
 

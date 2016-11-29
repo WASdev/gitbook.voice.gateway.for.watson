@@ -37,27 +37,27 @@ These instructions are for setting up Voice Gateway for Watson&trade; on your ow
  1. Pull the latest Docker images of the SIP Orchestrator (`voice-gateway-so`) and Media Relay (`voice-gateway-mr`):
 
     ```
-  docker pull ibmcom/voice-gateway-so:beta
+  docker pull ibmcom/voice-gateway-so:beta.latest
 
-  docker pull ibmcom/voice-gateway-mr:beta
+  docker pull ibmcom/voice-gateway-mr:beta.latest
 
     ```
 
- 1. Go to the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson) and clone the **quickstart/docker-compose.yml** file to your local machine.
+ 1. Go to the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson) and clone the repository. Once cloned navigate to the repositories **docker** directory where you will find a docker-compose.yml file.
 
-  This sample **docker-compose.yml** file is configured to point to the beta images.
-  **??? Minimum config for beta?**
+  This sample **docker-compose.yml** file is configured to point to the latest beta images of the voice gateway. You will need to modify the compose file to add all of your Watson service credentials which were allocated above for Speech To Text, Text To Speech and the Watson Conversation service. Each related Docker environment variable will be blank in the compose file. No other configuration is required to get a basic voice gateway running.
 
- 1. In the same directory where you cloned the **docker-compose.yml** file, create a .env file and set the `EXTERNAL_IP` to localhost as follows: **??? Can we better explain which parts the commands below do?**
+ 1. In the docker directory where you cloned the **docker-compose.yml** file, create a .env file and set the `EXTERNAL_IP` to localhost as follows. These commands assume you are using **vi** for editing but any editor will do:
 
    ```
  touch .env
  vi .env
    ```
-    At the top of the .env file, add this line: `EXTERNAL_IP=127.0.0.1`
+    At the top of the .env file, add this line: `EXTERNAL_IP=<IP address of Docker Engine>`
 
-    **Docker Machine only**: Because the voice gateway will be running in a virtual machine, you'll need to determine the IP address of the VM and set it in the .env file. Rather than setting EXTERNAL_IP to 127.0.0.1, set it to the IP returned from the `docker-machine ip` command.
- 1. Create and start up the containers by running the `docker-compose` command:
+    **Docker Machine only**: Because the voice gateway will be running in a virtual machine, you'll need to determine the IP address of the VM and set it in the .env file. Set it to the IP returned from the `docker-machine ip` command.
+
+ 1. Create and start up the containers by running this command:
 
     ```
  docker-compose up
@@ -69,11 +69,11 @@ These instructions are for setting up Voice Gateway for Watson&trade; on your ow
 
 #### What to do next
 
-Now you can call the voice gateway from the [SIP client that you configured](#prerequisites). Because the voice gateway is configured to run on port 5060 and localhost, you'll need to call this SIP URI: **sip:watson@localhost:5060**  Make sure that the SIP client is running on the same machine where the voice gateway containers are running.
+Now you can call the voice gateway from the [SIP client that you configured](#prerequisites). Because the voice gateway is configured to run on port 5060, you'll need to call this SIP URI: `sip:watson@<IP address of docker engine>:5060`.  
 
 #### Firewall considerations
 
-To deploy the voice gateway behind a firewall and then connect to that gateway through a SIP trunk or SIP client that is outside your firewall, you must turn on several ports to the Docker engine that is hosting the voice gateway. You can view the ports and IP addresses exported from the voice gateway Docker container by running the following command:
+To deploy the voice gateway behind a firewall and then connect to that gateway through a SIP trunk or SIP client that is outside your firewall, you must turn on several ports to access the Docker containers that are hosting the voice gateway. You can view the ports and IP addresses exported from the voice gateway Docker container by running the following command:
 
    ```
     docker ps
