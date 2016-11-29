@@ -1,28 +1,28 @@
-# Integrating the voice gateway with a contact center
+# Integrating the voice gateway with a contact center for self-service agents
 
-The voice gateway can integrate with existing contact centers through an enterprise Session Border Controller (SBC). The SBC handles the following call routing scenarios:
+When using the voice gateway to host a self-service agent, in some cases a customer might want to be transferred to a live contact center agent. The voice gateway can integrate with existing contact centers through an enterprise session border controller (SBC). The SBC handles the following call routing scenarios:
 
-* Inbound calls to the voice gateway from a caller connecting through a SIP Trunk.
-* Calls redirected to the voice gateway from an enterprise Interactive Voice Response (IVR) system.
-* Calls redirected from the voice gateway to a contact center or IVR system.
+* Inbound calls to the voice gateway from a caller connecting through a SIP trunk
+* Calls redirected to the voice gateway from an enterprise Interactive Voice Response (IVR) system
+* Calls redirected from the voice gateway to a contact center or IVR system
 
-When using the voice gateway to host a self-service agent, there will be cases when a caller will wish to "opt-out" of the call and be transferred to a live contact center agent. The voice gateway relies on standard SIP transfer procedures to redirect a call to a contact center using an "in-dialog" SIP REFER message.
+The voice gateway relies on standard SIP transfer procedures to redirect a call to a contact center using an in-dialog SIP REFER message.
 
-Its important to understand that there must be some entity in the call path that acts as a "pivot-point" or "anchor-point" for the call which can catch the SIP REFER and handle the redirect. This call anchor point is typically the Session Border Controller that interfaces with an external SIP trunk and forwards calls to the voice gateway. Enterprise SBCs can typically handle SIP REFER messages received over an existing SIP dialog and use that message to redirect an existing call to the contact center in the enterprise network.
+**Important!** The call path must include some entity that acts as a pivot-point for the call to catch the SIP REFER and handle the redirect. This pivot point is typically the session border controller, which interfaces with an external SIP trunk and forwards calls to the voice gateway. Enterprise SBCs can typically handle SIP REFER messages received over an existing SIP dialog and use that message to redirect an existing call to the contact center in the enterprise network.
 
-The diagram below describes in more detail the typical flow of messages related to both setting up a new call through an Enterprise SBC with a self-service agent hosted by a voice gateway as well as a transfer out to a contact center:
+<div style="float: right; padding-left: 1em; padding-bottom: 1em">
+<h5> Call flow through SBC with transfer to contact center</h5>
+ ![](images/call-transfer.png)</div>
 
-![](images/call-transfer.png)
+This diagram shows the typical flow of messages related to both setting up a new call through an enterprise SBC with a transfer out to a contact center:
 
-Here is a description of each step in this flow:
-
-1. Call arrives at the SBC via SIP Trunk
-1. Call routed to the Voice Gateway, SBC stays in the call-signaling path.
-1. New Conversation established and caller initiates turns with the Conversation through voice.
-1. Transfer initiated from Conversation on last turn.
-1. The Voice Gateway initiates a transfer back to the SBC by sending an in-dialog SIP REFER.
-1. SBC re-routes call to Contact Center ACD.
-1. Eventually the call is routed to the Agent.
+1. The call arrives at the SBC through SIP trunk.
+1. The call is routed to the voice gateway, and the SBC stays in the call-signaling path.
+1. A new Watson conversation is established, and the caller initiates turns with the Conversation through voice.
+1. Watson Conversation initiates a transfer on last turn based on caller input.
+1. The voice gateway initiates a transfer back to the SBC by sending an in-dialog SIP REFER message.
+1. The SBC re-routes call to the contact center automatic call distributor (ACD).
+1. The call is eventually routed to the agent.
 
 Initiation of the call transfer is completely controlled by the Conversation through the following state variables:
 

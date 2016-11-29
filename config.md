@@ -76,7 +76,5 @@ The following table lists all Docker environment variables that can be used to c
 | WATSON_TTS_URL | sdk default| Watson Text to Speech service endpoint URL.|
 | WATSON_TTS_VOICE | en_US_AllisonVoice | Voice used by the Watson Text to Speech service.|
 | WATSON_TTS_MODEL_CUSTOMIZATION_ID | n/a | Used to set a custom voice model for text to speech |
-| WATSON_ENERGY_BARGEIN_DURATION | 1500  | Speech utterance duration before a barge-in occurs. Used to prevent noise from causing a barge-in |
-| WATSON_ENERGY_BARGEIN_ENABLED | false | Enable or disable the media relay using energy detection for barge-in |
 |RTP_RELAY_RECORD | false | Set to true to enable recording on the relay. |
 |RTP_RELAY_LOGLEVEL| INFO | Set the bunyan log to INFO, DEBUG, or TRACE. |
