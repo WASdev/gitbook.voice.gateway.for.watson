@@ -1,5 +1,5 @@
 # Getting started with Voice Gateway for Watson
-IBM&reg; WebSphere&reg;  Connect Voice Gateway for Watson&trade; is deployed as part of an overall architecture that depends on the following factors:
+IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; is deployed as part of an overall architecture that depends on the following factors:
  * **Type of assistance:** Are you implementing a self-service agent or an agent assistant? Learn more about these options and their architectures in [About Voice Gateway for Watson](about.md).
  * **Deployment location:** Are you deploying the gateway in the cloud or on-premises? For each implementation, you can either deploy the voice gateway to the IBM&reg; Containers for Bluemix&reg;, or you can deploy the voice gateway in your own managed Docker Engine.
 
