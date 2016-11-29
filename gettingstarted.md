@@ -10,7 +10,7 @@ The following guides will help you quickly get started with a basic configuratio
 To set up a self-service agent, just follow these steps.
 
 1. Deploy Voice Gateway for Watson either on Bluemix or on Docker Engine.
-  * [Deploy the voice gateway on IBM Containers for Bluemix](self-service-bmix.md)
+  * [Deploy the voice gateway on IBM Containers for Bluemix](deploybmix.md)
   * [Deploy the voice gateway on Docker Engine](deploydocker.md)
 
 1. Test your self-service agent, either by using a SIP phone or via a voice call.
@@ -34,7 +34,7 @@ The voice gateway provides the ability to transcribe audio from an active phone 
  The voice gateway takes text output from the Watson Speech to Text service and publishes it through MQTT to an external MQTT message broker. Other services can then access the transcription messages in real time by subscribing on the related topics. For example, a subscriber could run real-time analytics on the transcription or simply archive the transcription.
 
 1. Deploy Voice Gateway for Watson either on Bluemix or on Docker Engine.
-  * [Deploy the voice gateway on IBM Containers for Bluemix](self-service-bmix.md)
+  * [Deploy the voice gateway on IBM Containers for Bluemix](deploybmix.md)
   * [Deploy the voice gateway on Docker Engine](deploydocker.md)
 
   Only the [Watson Speech to Text](https://console.ng.bluemix.net/catalog/services/speech-to-text) service is needed for agent assistants. In the voice gateway configuration, specify your Watson service credentials.
