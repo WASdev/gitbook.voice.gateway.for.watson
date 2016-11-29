@@ -12,14 +12,12 @@ These instructions are for setting up Voice Gateway for Watson&trade; on your ow
 
 * Sign up for IBM Bluemix and create the following Watson services:
  * [Watson Speech to Text](https://console.ng.bluemix.net/catalog/services/speech-to-text)
- * [Watson Text to Speech](https://console.ng.bluemix.net/catalog/services/text-to-speech)
- * [Watson Conversation](https://console.ng.bluemix.net/catalog/services/conversation)
+ * [Watson Text to Speech (self-service only)](https://console.ng.bluemix.net/catalog/services/text-to-speech)
+ * [Watson Conversation (self-service only)](https://console.ng.bluemix.net/catalog/services/conversation)
 
  **Important:** Be sure to [program your Conversation service](https://www.ibm.com/watson/developercloud/doc/conversation/t_dialog_build.shtml) with at least a catch-all response so that you can test the gateway.
 
  The deprecated Watson Dialog service is also supported by the voice gateway.
-
-* For testing purposes, install and configure a SIP client such as [Linphone](http://www.linphone.org/).  Because you will be running the SIP client on the same machine as the voice gateway, be sure to configure the SIP client to use a port other than 5060 (e.g. 5062) to avoid conflicts.
 
 * If you plan to deploy the voice gateway behind a firewall and you want to connect to that gateway through a SIP trunk or SIP client that is outside your firewall, see [Firewall considerations](#firewall-considerations).
 
@@ -43,17 +41,27 @@ These instructions are for setting up Voice Gateway for Watson&trade; on your ow
 
     ```
 
- 1. Go to the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson) and clone the repository. Once cloned navigate to the repositories **docker** directory where you will find a docker-compose.yml file.
+ 1. Go to the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson) and clone the repository. Once cloned navigate to the repositories **docker** directory where you will find the following two files:
+  ```
+  docker-compose-self-service.yml
+  docker-compose-agent-assist.yml
+  ```
 
-  This sample **docker-compose.yml** file is configured to point to the latest beta images of the voice gateway. You will need to modify the compose file to add all of your Watson service credentials which were allocated above for Speech To Text, Text To Speech and the Watson Conversation service. Each related Docker environment variable will be blank in the compose file. No other configuration is required to get a basic voice gateway running.
+  These sample **docker-compose.yml** files are configured to point to the latest beta images of the voice gateway.
 
- 1. In the docker directory where you cloned the **docker-compose.yml** file, create a .env file and set the `EXTERNAL_IP` to localhost as follows. These commands assume you are using **vi** for editing but any editor will do:
+  Begin by copying the file related to your type of deployment to a file named docker-compose.yml. You will then need to modify the compose file to add all of your Watson service credentials which were allocated above for Speech To Text, Text To Speech (self-service only) and the Watson Conversation service (self-service only). Each related Docker environment variable that you need to modify will be blank in the compose file. No other configuration is required to get a basic voice gateway running.
+
+  **Important:** If you are deploying to a public cloud it is highly recommended that you define the whitelisting related variables to prevent Denial of Service attacks. These will be commented out in the docker compose files.
+
+ 1. In the docker directory where you modified the docker-compose.yml file, create a **.env** file and set the `EXTERNAL_IP` to localhost as follows. These commands assume you are using **vi** for editing but any editor will do:
 
    ```
  touch .env
  vi .env
    ```
-    At the top of the .env file, add this line: `EXTERNAL_IP=<IP address of Docker Engine>`
+    At the top of the .env file, add this line:
+
+    `EXTERNAL_IP=<IP address of Docker Engine>`
 
     **Docker Machine only**: Because the voice gateway will be running in a virtual machine, you'll need to determine the IP address of the VM and set it in the .env file. Set it to the IP returned from the `docker-machine ip` command.
 
@@ -66,10 +74,6 @@ These instructions are for setting up Voice Gateway for Watson&trade; on your ow
   ```Bind for 0.0.0.0:5060 failed: port is already allocated```
 
   Shut down any conflicting applications, and try the command again.
-
-#### What to do next
-
-Now you can call the voice gateway from the [SIP client that you configured](#prerequisites). Because the voice gateway is configured to run on port 5060, you'll need to call this SIP URI: `sip:watson@<IP address of docker engine>:5060`.  
 
 #### Firewall considerations
 
