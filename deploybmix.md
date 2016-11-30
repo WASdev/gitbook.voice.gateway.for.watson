@@ -48,8 +48,8 @@ You can verify that the images now exist in your Bluemix repository by running t
 The command outputs a list of images similar to the following example:
 
  ```
- registry.ng.bluemix.net/myrepo/vgw.media.relay      latest  d2c2c3f446e8   2 days ago  212.4 MB
- registry.ng.bluemix.net/myrepo/vgw.sip.orchestrator latest  01269ea75e08   3 days ago  341.3 MB
+ registry.ng.bluemix.net/myrepo/voice-gateway-mr beta.latest  d2c2c3f446e8   2 days ago  212.4 MB
+ registry.ng.bluemix.net/myrepo/voice-gateway-so beta.latest  01269ea75e08   3 days ago  341.3 MB
  ```
  1. In the same directory, copy one of these files to a file named **docker.env** based on which type of configuration you wish to deploy:
  ```
@@ -74,8 +74,8 @@ The command outputs a list of images similar to the following example:
 The command outputs a list of the containers in your Bluemix space:
 
  ```
-1b69404e-c2e   registry.ng.bluemix.net/myrepo/cgw.media.relay:latest             ""   2 weeks ago    Running 16 days ago          169.46.147.48:8080->8080/tcp, 169.46.147.48:16384-16484->16384-16484/udp                   cgw.media.relay
-2435372b-8a9   registry.ng.bluemix.net/myrepo/cgw.sip.orchestrator:latest   ""   4 weeks ago     Shutdown (143) an hour ago   169.46.147.46:5060->5060/tcp, 169.46.147.46:8080->8080/tcp, 169.46.147.46:5060->5060/udp   cgw.sip.orchestrator
+1b69404e-c2e   registry.ng.bluemix.net/myrepo/voice-gateway-mr:beta.latest 2 weeks ago    Running 16 days ago   169.46.147.48:8080->8080/tcp, 169.46.147.48:16384-16484->16384-16484/udp  voice-gateway-mr
+2435372b-8a9   registry.ng.bluemix.net/myrepo/voice-gateway-so:beta.latest 4 weeks ago    Running 16 days ago   169.46.147.46:5060->5060/tcp, 169.46.147.46:8080->8080/tcp, 169.46.147.46:5060->5060/udp  voice-gateway-so
 ```
 
 #### What to do next
