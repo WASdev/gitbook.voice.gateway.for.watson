@@ -2,7 +2,7 @@
 
 Want to learn more? We've gathered some helpful links, tools, and other resources related to IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade;.
 
-## Voice Gateway for Watson
+### Voice Gateway for Watson
 * **[Media Relay on Docker Hub](https://hub.docker.com/r/ibmcom/voice-gateway-mr)** - Download the Docker image for the Media Relay, which together with the SIP Orchestrator makes up the voice gateway.
 * **[SIP Orchestrator on Docker Hub](https://hub.docker.com/r/ibmcom/voice-gateway-so)** - Download the Docker image for the SIP Orchestrator, which you use with the Media Relay.
 * **[Github repository with samples](https://github.com/WASdev/sample.voice.gateway.for.watson)** - Download sample deploy scripts and configuration files to quickly get started setting up the voice gateway.
