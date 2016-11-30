@@ -31,7 +31,7 @@ This diagram shows how the voice gateway orchestrates the various Watson service
 ##### Features and capabilities for self-service agents
 
 * **Barge-in:** Callers can interrupt Watson if the utterance Watson is sending to the caller is inappropriate for the context of the conversation.
-* **Watson Conversation service orchestration:** Support for the Watson Conversation service is included in the gateway. The deprecated Dialog service is also supported by the gateway.
+* **Watson Conversation service orchestration:** Support for the Watson Conversation service is included in the gateway.
 * **Call transfer:** The gateway can be signaled to initiate a transfer from the Watson Conversation service through the use of state variables. To perform the transfer, the gateway uses a SIP REFER as defined in section 6.1 of [RFC 5589](https://tools.ietf.org/html/rfc5589).
 * **Call hang-up:** The gateway can be signaled to terminate a call from the Watson Conversation service through the use of a state variable.
 * **Music on hold:** The gateway can play an audio file that is specified by the Conversation for some period of time or until processing in the Conversation completes.
@@ -40,7 +40,7 @@ This diagram shows how the voice gateway orchestrates the various Watson service
 * **Context mapping:** When transferring out of Watson, the gateway provides a way for the Conversation to specify metadata that gets embedded in the SIP REFER message. The metadata can be used to map context saved during the Watson conversation back to a live agent session.
 * **Audio recording:** The gateway can be configured to record audio conversations in the form of 16-bit, stereo WAV files. These WAV files are stored on a configured volume and must be retrieved through some external means such as ftp. Typically this feature is used to gather training data for the Speech to Text service.
 * **DTMF support:** The gateway supports [RFC 4733](https://tools.ietf.org/html/rfc4733), RTP Payload for DTMF Digits, Telephony Tones, and Telephony Signals. Dual-tone multifrequency (DTMF) signals are converted into single digit text utterances that are sent to the configured Watson API.
-* **White listing:** To prevent Denial of Service attacks, the gateway supports the ability to configure a whitelist. This whitelist enables filtering of inbound SIP INVITE requests based on the SIP to URI and from URI.
+* **Whitelisting:** To prevent Denial of Service attacks, the gateway supports the ability to configure a whitelist. This whitelist enables filtering of inbound SIP INVITE requests based on the SIP to URI and from URI.
 
 ### Agent assistants
 
