@@ -36,9 +36,7 @@ The following tables outline all the state variables that are supported by the v
 
 Each of these state variables are associated with Docker environment variables in the [voice gateway configuration](config.md).
 
-**Important:** Be sure to set the specified environment variable in the configuration so that the voice gateway passes the state variable to the Conversation service.
-
-**??? What about those that don't have a related environment variable?**
+**Important:** Be sure to set the specified environment variable in the configuration so that the voice gateway passes the state variable to the Conversation service. The table below shows how the environment variables relate to each state variable. Variables that do not show a related Docker environment variable are always enabled.
 
 | State variable name | Expected value | Description | Related Docker env variable |
 | -------------- | ----- | ----------- |
@@ -50,4 +48,4 @@ Each of these state variables are associated with Docker environment variables i
 | cgwBargeInOccurred | Yes / No | Indicates whether or not barge-in occurred |-|
 | cgwHangUp | Yes / No | Sent to conversation when a hangup is initiated by the caller or due to an error. The text in the ask will also include cgwHangUp. | -|
 | cgwSIPCustomInviteHeader | User defined | This is a user defined SIP header that will be pulled from the initial SIP INVITE and passed to the Conversation. | CUSTOM_SIP_INVITE_HEADER |
-| cgwTextAlternatives | JSON array (CONV-V1) or XML array (DIALOG_V1) | The confidence level for the top hypothesis and any alternatives. <p>The format matches exactly the format received from Watson STT when CONV-V1 is used:</p><p>[{"transcript":"hello there my name is Jose matter eco","confidence":0.758},{"transcript":"hello there my name is Jose matter Pico"},{"transcript":"hello there my name is Jose matter ego"},{"transcript":"hello there my name is Jose matter peco"}].</p><p> An XML array is sent when DIALOG-V1 is used:</p><p> [\<transcript\>one two three \</transcript\>\<confidence\>0.87\</confidence\>][\<transcript\>one to three \</transcript\>][\<transcript\>one two thirty \</transcript\>][\<transcript\>one to thirty \</transcript\>]</p> |-|
+| cgwTextAlternatives | JSON array | The confidence level for the top hypothesis and any alternatives. <p>The format matches exactly the format received from Watson STT :</p><p>[{"transcript":"hello there my name is Jose matter eco","confidence":0.758},{"transcript":"hello there my name is Jose matter Pico"},{"transcript":"hello there my name is Jose matter ego"},{"transcript":"hello there my name is Jose matter peco"}].</p> |-|

@@ -26,12 +26,6 @@ The following table lists all Docker environment variables that can be used to c
 | CONV_USERNAME | n/a | User name for the Watson Conversation service. |
 | CONV_PASSWORD | n/a | Password for the Watson Conversation service. |
 | CONV_ENDPOINT | n/a | Endpoint URL for the Conversation service. |
-| DIALOG_NAME | n/a | Name of the Watson dialog. Required when using the Watson Dialog service and no DIALOG_ID is specified.|
-| DIALOG_ID | n/a | ID of the Watson dialog. Required when using the Watson Dialog service and no DIALOG_NAME is specified. |
-| DIALOG_USERNAME | n/a | User name for the Watson Dialog service. |
-| DIALOG_PASSWORD | n/a | Password for the Watson Dialog service. |
-| DIALOG_ENDPOINT | n/a | Endpoint URL for Watson Dialog service. |
-| MQTT_PLUGIN_ENABLE | false | Set to true to enable the MQTT publisher of transcription events. |
 | ENABLE_AUDIT_MESSAGES | true | Set to false to disable audit messages. |
 | ENABLE_TRANSCRIPTION_AUDIT_MESSAGES | false | Set to true to enable audit transcription messages. |
 | LATENCY_REPORTING_THRESHOLD | 20 | Threshold in milliseconds for reporting round trip Conversation latency. |
@@ -48,6 +42,9 @@ The following table lists all Docker environment variables that can be used to c
 | TRANSFER_FAILED_REPLY_MESSAGE | Call transfer to an agent failed. Please try again later. Good bye. | Message streamed to the caller if the call transfer fails. |
 | WHITELIST_FROM_URI | none | Gateway will accept only calls that contain the specified string within the SIP from URI. |
 | WHITELIST_TO_URI | none | Gateway will accept only calls that contain the specified string within the SIP to URI. |
+| MQTT_PLUGIN_ENABLE | false | Set to true to enable the MQTT publisher of transcription events. |
+| MQTT_BROKER_ADDRESS | n/a | IP address of the MQTT broker for publishing Voice Gateway messages. |
+| MQTT_TOPIC_PATH | /voice-gateway/ | Root topic path that voice gateway messages are published to. |
 | LOG_LEVEL | audit | This is the log level for the SIP Orchestrator. Valid values include off, fatal, severe, warning, fine, finest, and all. |
 
 ### Media Relay environment variables
