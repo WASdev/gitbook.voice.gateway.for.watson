@@ -1,20 +1,20 @@
 # Setting up a Twilio SIP trunk for self-service agents
 
-For self-service agents, SIP trunks provide one option for forwarding communications from the customer to IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade;. The other option is to set up a session border controller (SBC). **??? When do you use each of these? What can we link to for more info?**
+For self-service agents, SIP trunks provide one option for connecting a caller to IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade;. Another option is to configure a session border controller (SBC) to forward calls to the voice gateway using a SIP INVITE. Integrating directly with a SIP trunk makes sense when you want to setup the voice gateway outside of an enterprise network.
+
+This section will explain how to configure a Twilio SIP trunk to use a voice gateway running in cloud docker service like IBM&reg; Containers for Bluemix&reg;. If you wish to deploy the voice gateway on premise in an enterprise network, there will typically be a Session Border Controller between the voice gateway and the SIP trunk. In this case the SBC will need to be configured to route calls to the voice gateway.
 
 ##### Twilio Elastic SIP Trunking
 
-One very common setup is to deploy the voice gateway to IBM&reg; Containers for Bluemix&reg; and then use a Twilio SIP trunk to access the voice gateway. Twilio is a cloud-based communications company that provides a simple way to provision a telephone number that can be connected to a SIP-based service, such as Voice Gateway for Watson.
+One very common setup is to deploy the voice gateway to a cloud based container service like IBM&reg; Containers for Bluemix&reg; and then use a Twilio SIP trunk to access the voice gateway. Twilio is a cloud-based communications company that provides a simple way to provision a telephone number that can be connected to a SIP-based service, such as Voice Gateway for Watson.
 
-**??? Do you have to use IBM Containers on Bluemix? Doesn't seem like it - how can we clarify?**
-
-**Note:** Twilio SIP Trunks do not support SIP REFER messages, which are required to transfer calls. To set up call transfer, your architecture must have an intermediate call anchor point that can handle SIP REFER messages. **??? What's an example of this?**
+**Note:** Twilio SIP Trunks do not support SIP REFER messages, which are required to transfer calls. To set up call transfer, your architecture must have an intermediate call anchor point that can handle SIP REFER messages such as a Session Border Controller.
 
 For more information about setting up Twilio Elastic SIP Trunking, see [the Twilio documentation](https://www.twilio.com/docs/api/sip-trunking).
 
 ##### Not using Twilio?
 
-Voice Gateway for Watson can be used with any SIP trunk. **??? Any alternatives?**
+Voice Gateway for Watson can be used with any SIP trunk provider such as Tata Communications.
 
 #### Setting up a Twilio SIP trunk to work with the voice gateway
 

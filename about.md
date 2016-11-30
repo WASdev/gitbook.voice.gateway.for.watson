@@ -83,7 +83,7 @@ When connecting to a self-service agent through a SIP trunk, you will need to co
 
 ![](images/arch-selfservice-sip.png)
 
-**??? When would you use a SIP trunk over an SBC?**
+SIP Trunks can be be used to quickly setup a test the voice gateway if you wish to call into Watson from the public telephone network. In this case you can simply deploy the voice gateway to a public cloud Docker container service like IBM&reg; Containers for Bluemix&reg;. On premise enterprise integration will typically require configuration of a Session Border Controller which is discussed in the next section.
 
 #### Self-service agent architecture when using an SBC
 
@@ -91,7 +91,7 @@ In a self-service agent where communications flow through a session border contr
 
 ![](images/arch-selfservice-sbc.png)
 
-**??? When would you use an SBC over a SIP trunk? Seems to differ based on if you want to forward to a human call center agent?**
+Session Border Controllers are typically needed if transfer out to an existing call center is required.
 
 #### Agent assistant architecture
 

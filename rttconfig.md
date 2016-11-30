@@ -33,9 +33,7 @@ When the MQTT plug-in is enabled, transcription messages are published regardles
 
 ### Accessing real-time transcripts through MQTT
 
-Transcription messages are published from the voice gateway to the MQTT message broker every time a new utterance is detected. You can choose to receive all transcription messages, only messages for specific tenants, or only messages for specific callers.
-
-**??? What's a tenant? What's a caller? Where do they do these actions? **
+Transcription messages are published from the voice gateway to the MQTT message broker every time a new utterance is detected. You can choose to receive all transcription messages or only messages for specific callers depending on the MQTT topic being subscribed on.
 
 The transcription messages are published to subtopics off this root topic according to following topic path pattern:
 
