@@ -1,8 +1,10 @@
 # Configuration environment variables for the voice gateway
 
 All configuration of Voice Gateway for Watson is currently handled through Docker environment variables. Where you specify the environment variables depends on where you deploy the voice gateway:
-* **IBM Containers for Bluemix:** Set the variables in the **quickstart/bluemix/docker.env** file.
-* **Docker Engine:** Set the variables in a YAML file, such as the default **docker-compose.yml** file in the root of the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson).
+* **IBM Containers for Bluemix:** Set the variables in the **bluemix/docker.env** file from this cloned repository: [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson).
+* **Docker Engine:** Set the variables in the docker-compose file you use from the **docker/** directory which was cloned this repository: [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson).
+
+**Note:** See the getting started section for details on setting up the voice gateway.
 
 The **docker.env** and **docker-compose.yml** files each contain every item that can be configured for both the SIP Orchestrator and the Media Relay.
 
@@ -29,26 +31,24 @@ The following table lists all Docker environment variables that can be used to c
 | DIALOG_USERNAME | n/a | User name for the Watson Dialog service. |
 | DIALOG_PASSWORD | n/a | Password for the Watson Dialog service. |
 | DIALOG_ENDPOINT | n/a | Endpoint URL for Watson Dialog service. |
-| NUMCONV_PLUGIN_ENABLE | false | Set to true to enable the number (date) conversion plug-in. |
 | MQTT_PLUGIN_ENABLE | false | Set to true to enable the MQTT publisher of transcription events. |
 | ENABLE_AUDIT_MESSAGES | true | Set to false to disable audit messages. |
 | ENABLE_TRANSCRIPTION_AUDIT_MESSAGES | false | Set to true to enable audit transcription messages. |
 | LATENCY_REPORTING_THRESHOLD | 20 | Threshold in milliseconds for reporting round trip Conversation latency. |
-| RELAY_LATENCY_REPORTING_THRESHOLD | 1000 | Threshold in milliseconds for reporting media relay related latencies. |
+| RELAY_LATENCY_REPORTING_THRESHOLD | 1000 | Threshold in milliseconds for reporting media relay related latencies. Specifically Text To Speech latency reporting is currently supported. |
 | CUSTOM_SIP_SESSION_HEADER | Call-ID | Specifies the SIP header to use as the global session ID in all audit messages and all in the cgwSessionID state variable passed to the conversation. |
-| MULTI_TENANT_CONFIG_FILE | n/a | File path to the multi-tenant configuration file. This configuration file is also used to define the whitelist of called numbers that can connect to the gateway. Example: ${server.config.dir}/cgwConfig.json |
-| POST_RESPONSE_TIMEOUT | 7000 | Time in milliseconds to wait before sending a "blank" utterance to the Conversation API to indicate no response from the caller. |
+| POST_RESPONSE_TIMEOUT | 7000 | Time to wait for a new utterance after the response is played back to the caller. If timeout occurs the conversation will receive a text update with the word "cgwPostResponseTimeout" to indicate a timeout occurred. |
 | SEND_SIP_CALL_ID_TO_CONVERSATION | false | When true, the SIP call ID to be passed to the Conversation in this state variable: cgwSIPCallID |
 | SEND_SIP_REQUEST_URI_TO_CONVERSATION | false | When true, the SIP request URI to be passed to the Conversation in this state variable: cgwSIPRequestURI |
 | SEND_SIP_TO_URI_TO_CONVERSATION | false | When true, the SIP To URI to be passed to the Conversation in this state variable: cgwSIPToURI |
 | SEND_SIP_FROM_URI_TO_CONVERSATION | false | When true, the SIP From URI to be passed to the Conversation in this state variable: cgwSIPFromURI |
 | CUSTOM_SIP_INVITE_HEADER | n/a | When set, the specified SIP header will be passed to the Conversation in this state variable: cgwSIPCustomInviteHeader |
-| LOG_LEVEL | audit | This is the log level for the SIP Orchestrator. Valid values include off, fatal, severe, warning, fine, finest, and all. |
 | CONVERSATION_FAILED_REPLY_MESSAGE | Call being transferred to an agent due to a technical problem. Good bye. | Message streamed to the caller if the Conversation service fails. |
 | TRANSFER_DEFAULT_TARGET | none | Identifies the target transfer to endpoint. Must be valid SIP or tel URI (e.g. sip:10.10.10.10). This is a default transfer target that is used only when a failure occurs and the call transfer target can't be obtained from the Conversation API. |
 | TRANSFER_FAILED_REPLY_MESSAGE | Call transfer to an agent failed. Please try again later. Good bye. | Message streamed to the caller if the call transfer fails. |
 | WHITELIST_FROM_URI | none | Gateway will accept only calls that contain the specified string within the SIP from URI. |
 | WHITELIST_TO_URI | none | Gateway will accept only calls that contain the specified string within the SIP to URI. |
+| LOG_LEVEL | audit | This is the log level for the SIP Orchestrator. Valid values include off, fatal, severe, warning, fine, finest, and all. |
 
 ### Media Relay environment variables
 The following table lists all Docker environment variables that can be used to configure the Media Relay:
