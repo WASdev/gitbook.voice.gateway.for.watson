@@ -4,7 +4,6 @@
   * [About Voice Gateway for Watson](about.md)
   * [Architecture](about.md#architecture)
   * [Supported protocols](about.md#supported-protocols)
-  * [Current Limitations](about.md#current-limitations)
 * [Getting started](gettingstarted.md)
   * [Deploying on IBM Containers](deploybmix.md)
   * [Deploying on Docker Engine](deploydocker.md)
@@ -17,3 +16,4 @@
   * [Configuration environment variables](config.md)
   * [API for self-service agents](api.md)
   * [Resources](resources.md)
+  * [Beta limitations](limitations.md)
