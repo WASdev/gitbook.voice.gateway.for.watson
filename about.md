@@ -5,7 +5,6 @@ IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; provides a Sessi
  * [Ways to use Voice Gateway for Watson](#ways_to_use_voice_gateway_for_watson)
  * [Architectures for each use](#architecture)
  * [Supported protocols](#supported-protocols)
- * [Current limitations](#current-limitations)
 
 ## Ways to use Voice Gateway for Watson
 
@@ -107,8 +106,3 @@ For agent assistants, media for calls is forked out to the voice gateway via the
 * **RTP**: The Real-time Transport Protocol (RTP) is supported for audio media streams.
 * **G.711:** The voice gateway supports only G.711 audio. Other audio protocols, such as G.723 or G.729, are not currently supported.
 * **MQTT:** MQ Telemetry Transport (MQTT) is supported for publishing speech utterances for transcription.
-
-## Current Limitations
-
-* Full orchestrated high availability (HA) is not supported.
-* Recording is supported only for self-service agents.
