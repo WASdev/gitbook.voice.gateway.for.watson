@@ -9,9 +9,9 @@ You can configure real-time transcription for both a self-service agent and an a
 ### Prerequisites
 Set up an MQTT message broker. You can use any broker that supports the MQTT 3.1 protocol, such as the open source [Mosca MQTT Broker](https://github.com/mcollina/mosca). The broker can run in any environment that is accessible to the voice gateway; for example, if the voice gateway is running in IBM&reg; Containers&reg; for Bluemix&trade;, the port that the broker is listening on must be publicly accessible from Bluemix.
 
-### Configuring the voice gateway MQTT plug-in
+### Configuring MQTT in the voice gateway
 
-To publish transcription messages from the voice gateway, configure the MQTT plug-in by adding the following Docker environment variables to your SIP Orchestrator configuration. To learn more about configuring the voice gateway, see [Configuration environment variables](config.md).
+To publish transcription messages from the voice gateway, configure the MQTT by adding the following Docker environment variables to your SIP Orchestrator configuration. To learn more about configuring the voice gateway, see [Configuration environment variables](config.md).
 
 1. Enable the voice gateway's MQTT plug-in.
 ```
@@ -38,10 +38,10 @@ Transcription messages are published from the voice gateway to the MQTT message 
 The transcription messages are published to subtopics off this root topic according to following topic path pattern:
 
 ```
-/<configured MQTT topic path>/<tenant number>/<caller number>
+/<configured MQTT topic path>/<number called>/<caller number>
 ```
 
-To listen for transcription messages at a certain level, subscribe in your MQTT message broker on the topic path at level of the tenant or caller whose messages you want to receive.
+To listen for transcription messages at a certain level, subscribe in your MQTT message broker on the topic path at level of the called number or caller whose messages you want to receive.
 
 * **Listen for all calls:** `<configured MQTT topic path>/#`
 
@@ -50,15 +50,15 @@ To listen for transcription messages at a certain level, subscribe in your MQTT 
    ```
    /voice-gateway/#
    ```
-* **Listen for all calls to a specific tenant:** `<configured MQTT topic path>/<tenant number>/#`
+<!--* **Listen for all calls to a specific number:** `<configured MQTT topic path>/<number called>/#`
 
  For example:
 
  ```
  /voice-gateway/18444523778/#
  ```
-
-* **Listen for a specific caller:** `<configured MQTT topic path>/<tenant number>/<caller number>/#`
+-->
+* **Listen for a specific caller:** `<configured MQTT topic path>/<number called>/<caller number>/#`
 
  **Note:** The caller number must include the country code.
 

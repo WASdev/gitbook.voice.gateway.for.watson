@@ -1,6 +1,6 @@
 # Deploying Voice Gateway for Watson on Docker Engine
 
-These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade on your own Docker engine or an on-premises installation. For cloud deployments, see [Deploying the voice gateway on IBM Containers for Bluemix](deploybmix.md).
+These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; on your own Docker engine or an on-premises installation. For cloud deployments, see [Deploying the voice gateway on IBM Containers for Bluemix](deploybmix.md).
 
 **Using Docker Machine?** Configuring the gateway on [Docker Machine](https://docs.docker.com/machine/overview/) is slightly different, as noted in the following steps. Windows users should note that Docker for Windows requires 64-bit Windows 10 Pro, so on earlier version of Windows, you must install Docker Machine.
 
@@ -10,7 +10,7 @@ These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gate
 
 * Create a [Docker Hub](https://hub.docker.com/) account so that you can access the Docker images of the SIP Orchestrator and the Media Relay.
 
-* Sign up for IBM Bluemix and create the following Watson services:
+* Sign up for IBM Bluemix&reg; and create the following Watson services:
  * [Watson Speech to Text](https://console.ng.bluemix.net/catalog/services/speech-to-text)
  * [Watson Text to Speech (self-service only)](https://console.ng.bluemix.net/catalog/services/text-to-speech)
  * [Watson Conversation (self-service only)](https://console.ng.bluemix.net/catalog/services/conversation)
@@ -39,20 +39,20 @@ These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gate
 
     ```
 
- 1. Go to the [sample.voice.gateway.for.watson Github repository](https://github.com/WASdev/sample.voice.gateway.for.watson) and clone the repository. In the cloned repository on your machine, go to **docker** directory, where you will find the following two files:
+ 1. Clone or download the [sample.voice.gateway.for.watson GitHub repository](https://github.com/WASdev/sample.voice.gateway.for.watson), which contains sample configuration files.
+
+ 1. In the cloned repository on your machine, go to **docker** directory, where you will find the following two files:
   ```
   docker-compose-self-service.yml
   docker-compose-agent-assist.yml
   ```
 
-  These sample files are preconfigured for each implementation and point to the latest beta images of the voice gateway. You'll need to modify the file for your implementation type to include your Watson service credentials.
+  These sample files are preconfigured with the minimum configuration for each implementation and point to the latest beta images of the voice gateway. You'll need to modify the file for your implementation type to include your Watson service credentials.
 
   1. Copy the file related to your type of implementation to a new file named **docker-compose.yml**. Keep the file in the same directory.
-  1. In the new **docker-compose.yml** file, add your credentials for your Watson services. Each Docker environment variable that you need to fill in is blank.
+  1. In the new **docker-compose.yml** file, fill in any blank environment variables, such as the user name and password for your Watson services.
 
-      **Remember:** Agents assistants require only the Speech to Text service. Self-service agents require that service, plus the Text to Speech and Conversation services.
-
-      No other configuration is required to get a basic voice gateway running.
+  For a complete listing of all variables, see [Configuration environment variables](config.md).
 
   **Important:** If you are deploying to a public cloud, it is highly recommended that you also define the whitelist variables to prevent Denial of Service attacks. By default, these variables are commented out in the Compose files.
 

@@ -28,41 +28,51 @@ This diagram shows the typical flow of messages related to both setting up a new
 1. The SBC re-routes call to the contact center automatic call distributor (ACD).
 1. The call is eventually routed to the agent.
 
-#### Configuring call transfer
+#### Configuring call transferring
+
+Call transfer behavior is defined though [API state variables](api.md) and the [voice gateway configuration](config.md) as described in the following sections.
+
+##### Initiating call transfers
 
 Initiation of the call transfer is completely controlled by the Watson Conversation service through the following state variables:
 
-| State variable name | Expected value | Description | Default |
+| State variable name | Expected value | Default value | Description |
 | -------------- | ------ | ----------- | ---------- |
-| cgwTransfer | Yes / No | Informs the CGW to initiate a transfer after the included text response is played back to the caller| - |
-| cgwTransferTarget | SIP or telephone URI | Identifies the transfer to endpoint (e.g. tel:+18883334444) | - |
+| cgwTransfer | Yes / No | - | Informs the voice gateway to initiate a transfer after the included text response is played back to the caller.|
+| cgwTransferTarget | SIP or telephone URI | - |  Identifies the transfer to endpoint (e.g. tel:+18883334444). |
 
-The voice gateway can also be configured to automatically transfer to a static endpoint if a failure occurs. Failures can occur, for example, if the voice gateway loses connectivity to one of the configured Watson services. First, this state variables can be set on the first turn of the conversation and will be used if there is a failure of some kind at any point during the call:
+##### Transferring upon failure
 
-| State variable name | Expected value | Description | Default |
+The voice gateway can also be configured to automatically transfer to a static endpoint if a failure occurs. Failures can occur, for example, if the voice gateway loses connectivity to one of the configured Watson services.
+
+The following state variables can be set on the first turn of the conversation and will be used if a failure occurs at any point during the call:
+
+| State variable name | Expected value | Default value | Description |
 | -------------- | ------ | ----------- | ---------- |
-| cgwTransferFailedMessage | Text string | Message streamed to the caller if the call transfer fails. Should be set by the Conversation service on the first turn. | - |
-| cgwConversationFailedMessage | Text string | Message streamed to the caller if the Conversation service fails. Should be set by the Conversation service on the first turn. | - |
+| cgwTransferFailedMessage | Text string | - | Message streamed to the caller if the call transfer fails. Should be set by the Conversation service on the first turn. |
+| cgwConversationFailedMessage | Text string |  - | Message streamed to the caller if the Conversation service fails. Should be set by the Conversation service on the first turn. |
 
-If for some reason, the Watson Conversation service cannot be reached, the follow configuration environment variables can be used to force a transfer to a static phone number:
+If the Watson Conversation service cannot be reached, the follow configuration environment variables can be used to force a transfer to a static phone number:
 
-| Environment variables | Default              | Details |
+| Environment variables | Default value | Description |
 | -------------- | -------------------- | --------------------------------------------------------------- |
 | CONVERSATION_FAILED_REPLY_MESSAGE | Call being transferred to an agent due to a technical problem. Good bye. | Message streamed to the caller if the Conversation service fails |
 | TRANSFER_DEFAULT_TARGET | none | Identifies the target transfer to endpoint. Must be valid SIP or tel URI (e.g. sip:10.10.10.10). This is a default transfer target. Used only when a failure occurs and the call transfer target can't be obtained from the Conversation API |
 | TRANSFER_FAILED_REPLY_MESSAGE | Call transfer to an agent failed. Please try again later. Good bye. | Message streamed to the caller if the call transfer fails |
 
-Typically, a SIP call coming into an enterprise SBC has a globally unique ID (GUID) added to the SIP signalling as a custom header. The GUID is used to track a call throughout its lifetime within the enterprise network. The voice gateway can be configured to extract the GUID from the initial SIP invite and pass the same GUID as a header in a subsequent REFER message to insure a call can be properly tracked as it propagates to a contact center agent.
+##### Tracking calls by passing GUIDs
+
+Typically, a SIP call coming into an enterprise SBC has a globally unique ID (GUID) added to the SIP signalling as a custom header. The GUID is used to track a call throughout its lifetime within the enterprise network. The voice gateway can be configured to extract the GUID from the initial SIP invite and pass the same GUID as a header in a subsequent REFER message. Passing the GUID ensures a call can be properly tracked as it propagates to a contact center agent.
 
 The following configuration item identifies the custom header that is pulled out of the initial SIP INVITE message that establishes the call:
 
-| Environment variables | Default value | Details |
+| Environment variables | Default value | Description |
 | -------------- | -------------------- | --------------------------------------------------------------- |
-| CUSTOM_SIP_INVITE_HEADER | N/A | When set, the specified SIP header will be passed to the Conversation in this cgwSIPCustomInviteHeader state variable. |
+| CUSTOM_SIP_INVITE_HEADER | N/A | When set, the specified SIP header will be passed to the Conversation in the cgwSIPCustomInviteHeader state variable. |
 
-These state variables can be used by the Watson Conversation service to inform the voice gateway of the custom header to set in the outgoing REFER message:
+The following state variables can be used by the Watson Conversation service to inform the voice gateway of the custom header to set in the outgoing REFER message:
 
-| State variable name | Expected value | Description | Default |
+| State variable name | Expected value  | Default value | Description |
 | -------------- | ------ | ----------- | ---------- |
-| cgwTransferHeader | User defined | Defines a custom header in an outgoing SIP REFER message during a transfer. The custom header value is defined by the cgwSIPTransferHeaderVal state variables. | - |
-| cgwTransferHeaderVal | User defined | Defines the value of a custom header in an outgoing SIP REFER message during a transfer. The custom header is defined by the cgwTransferHeader state variables. | - |
+| cgwTransferHeader | User defined | - |Defines a custom header in an outgoing SIP REFER message during a transfer. The custom header value is defined by the cgwSIPTransferHeaderVal state variables. |
+| cgwTransferHeaderVal | User defined | - | Defines the value of a custom header in an outgoing SIP REFER message during a transfer. The custom header is defined by the cgwTransferHeader state variables.
