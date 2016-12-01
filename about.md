@@ -32,15 +32,15 @@ This diagram shows how the voice gateway orchestrates the various Watson service
 
 * **Barge-in:** Callers can interrupt Watson if the utterance Watson is sending to the caller is inappropriate for the context of the conversation.
 * **Watson Conversation service orchestration:** Support for the Watson Conversation service is included in the gateway.
-* **Call transfer:** The gateway can be signaled to initiate a transfer from the Watson Conversation service through the use of state variables. To perform the transfer, the gateway uses a SIP REFER as defined in section 6.1 of [RFC 5589](https://tools.ietf.org/html/rfc5589).
-* **Call hang-up:** The gateway can be signaled to terminate a call from the Watson Conversation service through the use of a state variable.
+* **Call transfer:** The gateway can be signaled to initiate a transfer from the Watson Conversation service through the Voice Gateway API. To perform the transfer, the gateway uses a SIP REFER as defined in section 6.1 of [RFC 5589](https://tools.ietf.org/html/rfc5589).
+* **Call hang-up:** The gateway can be signaled to terminate a call from the Watson Conversation service through the Voice Gateway API.
 * **Music on hold:** The gateway can play an audio file that is specified by the Conversation for some period of time or until processing in the Conversation completes.
-* **SSML tagging:** Speech Synthesis Markup Language (SSML) tags are used to control how Text to Speech synthesizes utterances into audio. The gateway supports passing these tags through to Text to Speech when received from the Conversation.
-* **Latency auditing:** The gateway monitors latency, which is a key indicator on how well Watson is communicating with a caller. Because the gateway orchestrates several Watson services, it's critical to be able to identify when one of these services is slow to respond, which ultimately results in long voice response delays and unnatural conversations with the caller.
+* **SSML tagging:** Speech Synthesis Markup Language (SSML) tags are used to control how Text to Speech synthesizes utterances into audio that is streamed to the caller. The gateway supports passing these tags through to Text to Speech when received from the Conversation.
+* **Latency auditing:** The gateway monitors latency, which is a key indicator on how well Watson is communicating with a caller. Because the gateway orchestrates several Watson services, it's critical to be able to identify when one of these services is slow to respond.
 * **Context mapping:** When transferring out of Watson, the gateway provides a way for the Conversation to specify metadata that gets embedded in the SIP REFER message. The metadata can be used to map context saved during the Watson conversation back to a live agent session.
-* **Audio recording:** The gateway can be configured to record audio conversations in the form of 16-bit, stereo WAV files. These WAV files are stored on a configured volume and must be retrieved through some external means such as ftp. Typically this feature is used to gather training data for the Speech to Text service.
+* **Audio recording:** The gateway can be configured to record audio conversations in the form of 16-bit, stereo WAV files. These WAV files are stored on a configured volume and must be retrieved through some external means such as ftp. Typically this feature is used to gather training data for the Speech to Text service. Audio recording is only supported for  self-service agent deployments.
 * **DTMF support:** The gateway supports [RFC 4733](https://tools.ietf.org/html/rfc4733), RTP Payload for DTMF Digits, Telephony Tones, and Telephony Signals. Dual-tone multifrequency (DTMF) signals are converted into single digit text utterances that are sent to the configured Watson API.
-* **Whitelisting:** To prevent Denial of Service attacks, the gateway supports the ability to configure a whitelist. This whitelist enables filtering of inbound SIP INVITE requests based on the SIP to URI and from URI.
+* **Whitelisting:** To prevent Denial of Service attacks, the gateway supports the ability to configure a whitelist. This whitelist enables filtering of inbound SIP INVITE requests based on the SIP to URI and SIP from URI.
 
 ### Agent assistants
 
@@ -50,16 +50,16 @@ The voice gateway provides the ability to transcribe caller and callee (e.g. con
 
 ### Real-Time Voice Transcription
 
-Voice Gateway for Watson provides a plug-in that can be used to publish MQTT events on topics that reflect the caller and callee of a particular phone call whenever a text utterance is transcoded. This capability enables real-time recording of call transcriptions or analytic processing of the speech to provide real-time feedback to a live contact center agent.
+Voice Gateway for Watson can be used to publish MQTT events on topics that reflect the caller and callee of a particular phone call whenever a text utterance is transcoded. This capability enables real-time recording of call transcriptions or analytic processing of the speech to provide real-time feedback to a live contact center agent.
 
 ## Architecture
 
-The Voice Gateway for Watson is one of several components in the overall architecture of self-service agents and agent assistants. The architecture and technologies used differ depending on your implementation. For self-service agents, callers can either connect directly to the voice gateway via a SIP trunk or indirectly through a session border controller (SBC).
+The Voice Gateway for Watson is one of several components in the overall architecture of self-service agents and agent assistants. The architecture and technologies used differ depending on your implementation. For self-service agents, callers can either connect directly to the voice gateway via a SIP trunk or SIP client. Callers can also connect to the voice gateway indirectly through a session border controller (SBC).
 
 #### Voice Gateway architecture
 Voice Gateway for Watson is composed of two separate microservices, the _SIP Orchestrator_ and the _Media Relay_. These microservices are delivered in the form of two separate Docker images.
 
-* **SIP Orchestrator:** Orchestrates Watson Conversation service and the Media Relay
+* **SIP Orchestrator:** Orchestrates SIP, the Watson Conversation service and the Media Relay
    * Runs on WebSphere Application Server Liberty.
    * Acts as either a SIP User Agent Server (UAS) or a SIPREC Session Recording Server (SRS)
    * Built in Java
@@ -71,7 +71,7 @@ Voice Gateway for Watson is composed of two separate microservices, the _SIP Orc
    * Orchestrates Watson Speech to Text (STT) and Text to Speech (TTS) services
    * Built in JavaScript using Node Streams architecture
    * Delivered as a Node Module
-   * Configuration via Docker environment variables
+   * Configured via Docker environment variables
 
 The following diagram shows at a high-level how these two microservices combine to provide the full functionality of the Voice Gateway for Watson:
 
@@ -79,23 +79,23 @@ The following diagram shows at a high-level how these two microservices combine 
 
 #### Self-service agent architecture when using a SIP trunk
 
-When connecting to a self-service agent through a SIP trunk, you will need to configure you SIP trunk to forward INVITE requests to the voice gateway based on its IP address and SIP port:
+When connecting to a self-service agent through a SIP trunk, the SIP trunk must be configured to forward INVITE requests to the voice gateway based on the gateway's IP address and SIP port:
 
 ![](images/arch-selfservice-sip.png)
 
-SIP Trunks can be be used to quickly setup a test the voice gateway if you wish to call into Watson from the public telephone network. In this case you can simply deploy the voice gateway to a public cloud Docker container service like IBM&reg; Containers for Bluemix&reg;. On premise enterprise integration will typically require configuration of a Session Border Controller which is discussed in the next section.
+SIP Trunks can be be used to quickly setup a test with the voice gateway that supports calling into Watson from the public telephone network. In this case the voice gateway is deployed to a public cloud Docker container service like IBM&reg; Containers for Bluemix&reg;. On premise enterprise integration will typically require configuration of a Session Border Controller which is discussed in the next section.
 
 #### Self-service agent architecture when using an SBC
 
-In a self-service agent where communications flow through a session border controller (SBC), you will need to configure the SBC to forward calls to the voice gateway based on its IP address and SIP port. Note that the SBC must stay in the call path to handle SIP REFER messages if an opt-out transfer is required:
+For self-service agent setups that require communications to flow through a session border controller (SBC), you will need to configure the SBC to forward calls to the voice gateway based on its IP address and SIP port. Note that the SBC must stay in the call path to handle SIP REFER messages if an opt-out transfer is required:
 
 ![](images/arch-selfservice-sbc.png)
 
-Session Border Controllers are typically needed if transfer out to an existing call center is required.
+**Note:** Session Border Controllers are typically needed if transfer out to an existing call center is required.
 
 #### Agent assistant architecture
 
-For agent assistants, media for calls is forked out to the voice gateway via the SIPREC protocol. This diagram also shows how transcriptions from the voice gateway can be accessed via an MQTT message broker:
+For agent assist, media for calls is forked out to the voice gateway via the SIPREC protocol. This diagram also shows how transcriptions from the voice gateway can be accessed via an MQTT message broker:
 
 ![](images/arch-agentassistant.png)
 
