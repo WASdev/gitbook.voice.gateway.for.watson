@@ -1,8 +1,9 @@
 # Configuration environment variables for the voice gateway
 
 All configuration of Voice Gateway for Watson is currently handled through Docker environment variables. Where you specify the environment variables depends on where you deploy the voice gateway:
-* **IBM Containers for Bluemix:** Set the variables in the **bluemix/docker.env** file from this cloned GitHub repository: [sample.voice.gateway.for.watson](https://github.com/WASdev/sample.voice.gateway.for.watson).
+
 * **Docker Engine:** Set the variables in the docker-compose file you use from the **docker/** directory which was cloned from this GitHub repository: [sample.voice.gateway.for.watson](https://github.com/WASdev/sample.voice.gateway.for.watson).
+* **IBM Containers for Bluemix:** Set the variables in the **bluemix/docker.env** file from this cloned GitHub repository: [sample.voice.gateway.for.watson](https://github.com/WASdev/sample.voice.gateway.for.watson).
 
 **Note:** See the getting started section for details on setting up the voice gateway and working with the GitHub repository that contains the sample docker-compose and docker.env files.
 

@@ -34,15 +34,33 @@ These Docker environment variables for the SIP Orchestrator are used to control 
 
 The log files for the SIP Orchestrator container are in the **logs** directory. This directory contains the **messages.log** file. If the LOG_LEVEL is set to at least `fine`, the directory also contains the **trace.log** file, which contains additional details. To copy the log files off of the SIP Orchestrator container, run the following commands:
 
+** For Docker Engine:**
+
 ```
-cf ic cp cgw.sip.orchestrator:/logs/messages.log .
-cf ic cp cgw.sip.orchestrator:/logs/trace.log .
+docker cp voice-gateway-so:/logs/messages.log .
+docker cp voice-gateway-so:/logs/trace.log .
+```
+
+
+** For IBM Containers for Bluemix:**
+
+```
+cf ic cp voice-gateway-so:/logs/messages.log .
+cf ic cp voice-gateway-so:/logs/trace.log .
 ```
 
 Similarly, the main log file for the Media Relay, **trace.log**, is in the **logs** directory on its container. The **trace.log** file is best viewed by using [Bunyan](https://github.com/trentm/node-bunyan), especially when the log level is set to `DEBUG`. To copy the **trace.log** file off of the Media Relay container, run the following command:
 
+**For Docker Engine:**
+
 ```
-cf ic cp cgw.sip.orchestrator:/logs/trace.log .
+docker cp voice-gateway-mr:/cgw-media-relay/logs/trace.log .
+```
+
+**For IBM Containers for Bluemix:**
+
+```
+cf ic cp voice-gateway-mr:/cgw-media-relay/logs/trace.log .
 ```
 
 If Bunyan is installed, you can use the following command to view your log file:
