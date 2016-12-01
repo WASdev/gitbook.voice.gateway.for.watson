@@ -6,10 +6,10 @@ IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; provides a way t
 
 Watch the video!
 
-### Set up your own
+### Get started
 
 When you're ready to set up your own self-service agent or agent assistant, check out the [Getting started with Voice Gateway for Watson](gettingstarted.md) section. The guides in this section walk you through a simple initial setup in IBM Containers for Bluemix&reg; or Docker Engine.
 
-### Dig a little deeper
+### Customize and configure
 
-After you're comfortable with the basics, learn how to customize your setup and configure advanced features.
+After you're comfortable with the basics, learn how to customize your setup and configure advanced features in [Customizing and advanced configuration](advanced.md).

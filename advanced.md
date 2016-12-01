@@ -16,5 +16,5 @@ After you have the basics down, you can further configure components in the IBM&
 
 Agent assistants take a little more work to initially set up, so less configuration is needed later.
 
-* **[Define your configuration](config.md)** - Using the Docker environment variables, you can whitelist certain numbers, define logging levels, and more. 
-* **[Configure real-time transcription](rttconfig.md)** - As with self-service agents, you can automatically transcribe conversations in real time to keep a written record for later analysis.
+* **[Define your configuration](config.md)** - Using the Docker environment variables, you can whitelist certain numbers, define logging levels, and more.
+* **[Configure real-time transcription](rttconfig.md)** - As with self-service agents, you can automatically transcribe conversations in real time to keep a written record for monitoring or analysis.

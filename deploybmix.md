@@ -24,13 +24,13 @@ These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gate
  ```
   docker login
  ```
- 1. Log in to your Bluemix organization and space using the following command:
+ 1. Log in to your Bluemix account space using the following command, which will prompt you for your organization and space:
 
  ```
- cf login -o <org name> -a api.ng.bluemix.net
+ cf login -a api.ng.bluemix.net
  cf ic login
  ```
-**Important:** If your organization has multiple spaces, be sure to select the correct space.
+
  1. Download the sample script files that you'll need to deploy the voice gateway. From the   [sample.voice.gateway.for.watson repository on Github](https://github.com/WASdev/sample.voice.gateway.for.watson), click  **Clone or Download** and then **Download ZIP**. After the download completes, extract the ZIP file. If you prefer you can clone the repository instead.
 
  1. Go to the **bluemix\** subdirectory of the directory where you extracted the ZIP file or cloned the repository. This directory contains the **pull_tag_push.sh** script file, which is used to pull the voice gateway images from Docker Hub, tag them for your Bluemix repository, and then push them into your Bluemix repository. Note that you must be logged in to both Docker Hub and Bluemix for the script to work.

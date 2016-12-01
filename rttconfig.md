@@ -48,7 +48,7 @@ To listen for transcription messages at a certain level, subscribe in your MQTT 
  For example:
 
    ```
-     /voice-gateway/#
+   /voice-gateway/#
    ```
 * **Listen for all calls to a specific tenant:** `<configured MQTT topic path>/<tenant number>/#`
 
