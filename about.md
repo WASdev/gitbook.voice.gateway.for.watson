@@ -1,6 +1,6 @@
 # About Voice Gateway for Watson
 
-IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; provides a way to integrate a set of orchestrated Watson services with a public or private telephone network using the Session Initiation Protocol (SIP). The voice gateway enables direct voice interactions over a telephone with a cognitive self-service agent or the ability to transcribe a phone call between two people (e.g. a customer and a call center agent) in real-time, enabling the ability to process the conversation with real-time analytics.
+IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; provides a way to integrate a set of orchestrated Watson services with a public or private telephone network using the Session Initiation Protocol (SIP). The voice gateway enables direct voice interactions over a telephone with a cognitive self-service agent or the ability to transcribe a phone call between a caller and agent in real-time, enabling the ability to process the conversation with analytics for real-time agent feedback.
 
  * [Ways to use Voice Gateway for Watson](#ways_to_use_voice_gateway_for_watson)
  * [Architectures for each use](#architecture)
