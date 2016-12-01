@@ -21,7 +21,7 @@ Voice Gateway for Watson can be used with any SIP trunk provider such as Tata Co
 1. [Create a Twilio account](https://www.twilio.com/try-twilio).
   **Note:** Creating an account requires a credit card, which will be periodically charged based on your usage of the SIP trunk that you configure.
 
-1. Create a SIP trunk by going to the **SIP** dashboard and clicking on the **+** icon. In the resulting dialog, enter a name for your SIP trunk, and click **Create**.
+1. Create a SIP trunk by going to the **SIP** dashboard and clicking on the **+** icon. In the resulting dialog box, enter a name for your SIP trunk, and click **Create**.
 
 1. Configure the Origination address, which is the public SIP URI of the voice gateway.
 
