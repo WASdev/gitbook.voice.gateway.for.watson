@@ -1,36 +1,37 @@
 # Setting up a Twilio SIP trunk for self-service agents
 
-For self-service agents, SIP trunks provide one option for connecting a caller to IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade;. Another option is to configure a session border controller (SBC) to forward calls to the voice gateway using a SIP INVITE. Integrating directly with a SIP trunk makes sense when you want to setup the voice gateway outside of an enterprise network.
+For self-service agents, SIP trunks provide one option for connecting a caller to IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade;. Integrating directly with a SIP trunk is typically used to set up the voice gateway outside of an enterprise network. Alternatively, you can configure a session border controller (SBC) to forward calls to the voice gateway using a SIP INVITE request.
 
-This section will explain how to configure a Twilio SIP trunk to use a voice gateway running in cloud docker service like IBM&reg; Containers for Bluemix&reg;. If you wish to deploy the voice gateway on premise in an enterprise network, there will typically be a Session Border Controller between the voice gateway and the SIP trunk. In this case the SBC will need to be configured to route calls to the voice gateway.
+This article describes how to configure a Twilio SIP trunk to use a voice gateway running in a cloud-based Docker service, such as IBM&reg; Containers for Bluemix&reg;. In typical on-premises deployments in an enterprise network, there is a session border controller between the voice gateway and the SIP trunk. In this setup, the SBC must be configured to route calls to the voice gateway.
 
 ##### Twilio Elastic SIP Trunking
 
-One very common setup is to deploy the voice gateway to a cloud based container service like IBM&reg; Containers for Bluemix&reg; and then use a Twilio SIP trunk to access the voice gateway. Twilio is a cloud-based communications company that provides a simple way to provision a telephone number that can be connected to a SIP-based service, such as Voice Gateway for Watson.
+One very common setup is to deploy the voice gateway to a cloud-based container service, such as IBM&reg; Containers for Bluemix&reg;, and then use a Twilio SIP trunk to access the voice gateway. Twilio is a cloud-based communications company that provides a simple way to provision a telephone number that can be connected to a SIP-based service, such as Voice Gateway for Watson.
 
-**Note:** Twilio SIP Trunks do not support SIP REFER messages, which are required to transfer calls. To set up call transfer, your architecture must have an intermediate call anchor point that can handle SIP REFER messages such as a Session Border Controller.
+**Note:** Twilio SIP trunks do not support SIP REFER messages, which are required to transfer calls. To set up call transfer, your architecture must have an intermediate call anchor point that can handle SIP REFER messages, such as a session border controller.
 
 For more information about setting up Twilio Elastic SIP Trunking, see [the Twilio documentation](https://www.twilio.com/docs/api/sip-trunking).
 
 ##### Not using Twilio?
 
-Voice Gateway for Watson can be used with any SIP trunk provider such as Tata Communications.
+Voice Gateway for Watson can be used with any SIP trunk provider, such as Tata Communications.
 
 #### Setting up a Twilio SIP trunk to work with the voice gateway
 
 1. [Create a Twilio account](https://www.twilio.com/try-twilio).
+
   **Note:** Creating an account requires a credit card, which will be periodically charged based on your usage of the SIP trunk that you configure.
 
 1. Create a SIP trunk by going to the **SIP** dashboard and clicking on the **+** icon. In the resulting dialog box, enter a name for your SIP trunk, and click **Create**.
 
 1. Configure the Origination address, which is the public SIP URI of the voice gateway.
 
-  If the voice gateway is running IBM Containers for Bluemix, you can run the following command to determine the IP address of the SIP Orchestrator:
+  If the voice gateway is running on IBM Containers for Bluemix, you can run the following command to determine the IP address of the SIP Orchestrator:
 
    ```
    cf ic ps
    ```
-  In the Twilio dashboard, enter the origination address as follows:
+  In the Twilio dashboard, enter the origination address in the following format:
 
    ```
    sip:<address:port>;transport=tcp
@@ -39,7 +40,7 @@ Voice Gateway for Watson can be used with any SIP trunk provider such as Tata Co
 
 1. Create a phone number and assign it to the SIP trunk.
 
-  1. Go to the **Number** dashboard, and click on the **+** icon. A panel will display where you can provision a new phone number in your region.
+  1. Go to the **Number** dashboard, and click the **+** icon. A panel will display where you can provision a new phone number in your region.
 
   1. Assign the number to the SIP trunk you created by navigating back to the SIP trunk and clicking on the **Number** icon.
 
