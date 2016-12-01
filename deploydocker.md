@@ -17,8 +17,6 @@ These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gate
 
  **Important:** Be sure to [program your Conversation service](https://www.ibm.com/watson/developercloud/doc/conversation/t_dialog_build.shtml) with at least a catch-all response so that you can test the gateway.
 
- The deprecated Watson Dialog service is also supported by the voice gateway.
-
 * If you plan to deploy the voice gateway behind a firewall and you want to connect to that gateway through a SIP trunk or SIP client that is outside your firewall, see [Firewall considerations](#firewall-considerations).
 
 #### Installing and running the voice gateway
@@ -52,7 +50,7 @@ These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gate
   1. Copy the file related to your type of implementation to a new file named **docker-compose.yml**. Keep the file in the same directory.
   1. In the new **docker-compose.yml** file, add your credentials for your Watson services. Each Docker environment variable that you need to fill in is blank.
 
-      **Remember:** Agents assistants require only the Speech to Text service. Self-service agents require that service, plus the Text to Speech and Conversation (or Dialog) services.
+      **Remember:** Agents assistants require only the Speech to Text service. Self-service agents require that service, plus the Text to Speech and Conversation services.
 
       No other configuration is required to get a basic voice gateway running.
 
