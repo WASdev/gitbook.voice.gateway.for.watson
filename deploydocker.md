@@ -2,7 +2,7 @@
 
 These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; on your own Docker engine or an on-premises installation. For cloud deployments, see [Deploying the voice gateway on IBM Containers for Bluemix](deploybmix.md).
 
-**Using Docker Machine?** Configuring the gateway on [Docker Machine](https://docs.docker.com/machine/overview/) is slightly different, as noted in the following steps. Windows users should note that Docker for Windows requires 64-bit Windows 10 Pro, so on earlier version of Windows, you must install Docker Machine.
+**Using Docker Machine?** Configuring the gateway on [Docker Machine](https://docs.docker.com/machine/overview/) is slightly different, as noted in the following steps. Windows users should note that Docker for Windows requires 64-bit Windows 10 Pro, so on earlier versions of Windows, you must install Docker Machine.
 
 #### Prerequisites
 
