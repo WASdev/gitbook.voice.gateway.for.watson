@@ -6,6 +6,10 @@ When troubleshooting, keep in mind that the Voice Gateway for Watson is made up 
 
 Consider how each of these components work together as you attempt to isolate the problem. For more detail, see [Architecture](about.md#architecture).
 
+##### Need help?
+
+If you need help, the fastest way to get answers on questions about the voice gateway is to post your questions in the [WASdev dwAnswers forum](https://developer.ibm.com/answers/smartspace/wasdev/).
+
 ## Logging and tracing
 
 Like other configuration for the voice gateway, logging and tracing levels are configured as Docker environment variables, as described in [Configuration environment variables for the voice gateway](config.md).
