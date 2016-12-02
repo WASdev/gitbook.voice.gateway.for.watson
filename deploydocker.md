@@ -47,10 +47,10 @@ These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gate
   docker-compose-agent-assist.yml
   ```
 
-  These sample files are preconfigured with the minimum configuration for each implementation and point to the latest beta images of the voice gateway. You'll need to modify the file for your implementation type to include your Watson service credentials.
+  These sample files are preconfigured with the minimum configuration for each implementation and point to the latest beta images of the voice gateway. You'll need to modify the file for your implementation type to include your Watson service credentials. For agent assistants, also configure the [MQTT broker and topic path](rttconfig.md).
 
   1. Copy the file related to your type of implementation to a new file named **docker-compose.yml**. Keep the file in the same directory.
-  1. In the new **docker-compose.yml** file, fill in any blank environment variables, such as the user name and password for your Watson services.
+  1. In the new **docker-compose.yml** file, fill in any blank environment variables, such as the user name and password for your Watson services and the MQTT broker and topic path (agent assistant only).
 
   For a complete listing of all variables, see [Configuration environment variables](config.md).
 

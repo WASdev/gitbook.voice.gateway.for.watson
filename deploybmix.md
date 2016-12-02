@@ -51,15 +51,15 @@ The command outputs a list of images similar to the following example:
  registry.ng.bluemix.net/myrepo/voice-gateway-mr beta.latest  d2c2c3f446e8   2 days ago  212.4 MB
  registry.ng.bluemix.net/myrepo/voice-gateway-so beta.latest  01269ea75e08   3 days ago  341.3 MB
  ```
- 1. In the same directory, copy one of the follow files to a file named **docker.env**. The file that you copy depends on which implementation you are deploying:
+ 1. In the same directory, copy one of the following sample files to a file named **docker.env**. These sample files are preconfigured with the minimum configuration for each implementation.
  ```
  docker-self-service.env
  docker-agent-assist.env
  ```
 
- 1. Open the new **docker.env** file, which is where you configure the voice gateway by setting Docker environment variables. Fill in any blank configuration variables, such as the user name and password for your Watson services on Bluemix.
+ 1. Open the new **docker.env** file, which is where you configure the voice gateway by setting Docker environment variables. Fill in any blank configuration variables, such as the user name and password for your Watson services on Bluemix. For agent assistants, also configure the [MQTT broker and topic path](rttconfig.md).
 
- **Note:** Each same docker.env file includes the minimum configuration required to test the voice gateway. For a complete listing of all variables, see [Configuration environment variables](config.md).
+ Each sample file includes the minimum configuration required to test the voice gateway. For a complete listing of all variables, see [Configuration environment variables](config.md).
 
  1. Deploy the containers for the voice gateway to your Bluemix space by running the following command:
 
