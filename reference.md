@@ -5,3 +5,4 @@ Find information about configuring IBM&reg; WebSphere&reg; Connect Voice Gateway
 * [Configuration environment variables](config.md)
 * [API for self-service agents](api.md)
 * [Resources](resources.md)
+* [Beta limitations for Voice Gateway for Watson](limitation.md)
