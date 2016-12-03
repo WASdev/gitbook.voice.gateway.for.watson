@@ -6,13 +6,13 @@ You can implement the voice gateway in two different ways:
 * As a cognitive _self-service agent_, which directly interacts with customers over a telephone
 * As a cognitive _agent assistant_, which transcribes and analyzes a conversation for real-time agent feedback
 
-Learn more about both of these uses in [About the Voice Gateway](about.md).
+Learn more about both of these uses in [About Voice Gateway for Watson](about.md).
 
 ### See it in action
 
 Sometimes seeing is believing. Watch demonstrations of both the self-service agent and agent assistant in the following video.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5ZQUgF7GOsU" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5ZQUgF7GOsU" frameborder="0" allowfullscreen>Video URL: https://youtu.be/5ZQUgF7GOsU</iframe>
 
 
 ### Get started

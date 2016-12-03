@@ -1,6 +1,6 @@
 # API for self-service agents
 
-Voice Gateway for Watson is controlled through state variables that are exchanged with the configured Watson Conversation service.
+IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; is controlled through state variables that are exchanged with the configured Watson Conversation service.
 * **To the gateway:** The Conversation service sends state variables to initiate various actions in the voice gateway.
 * **From the gateway:** Based on configured Docker environment variables, the voice gateway sends various state variables to the Conversation service to pass various headers extracted from the call signaling.
 
