@@ -1,18 +1,20 @@
-# Recording
+# Recording call audio
 
-Voice Gateway for Watson provides the ability to record the calls from a *Self Service* session.
+You can configure IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; to record call audio to a WAV file. The recordings capture audio from both the customer caller and the Watson Text to Speech service.
 
-**Note:** _Agent Assist_ recording is not available.
+**Note:** Audio recording is available only for self-service agents. Calls to agent assistants cannot be recorded.
 
-### Configure
+### Configuring audio recording
 
-Depending on how you deployed the Voice Gateway there will be two ways to configure it for recording and how to retrieve the recordings: **[Docker Engine](#docker-engine)** vs **[Bluemix](#bluemix)**
+When audio recording is configured, all recordings are saved onto the `voice-gateway-mr` container under the **/cgw-media-relay/recordings/** directory. Because the recordings are saved to the container, recordings are erased when the container is redeployed. To save your recordings, mount the directory to either a local directory on your machine or to a [Docker Volume](https://docs.docker.com/engine/tutorials/dockervolumes/).
 
-All the recordings are saved onto the `voice-gateway-mr` container under the **/cgw-media-relay/recordings/** directory. Unless you mount the directory to a local directory on your machine or a [Docker Volume](https://docs.docker.com/engine/tutorials/dockervolumes/) the recordings are erased when the container is re-deployed.
+How you configure audio recording depends on where you deployed the voice gateway as described in the following sections.
 
-##### Docker Engine
+#### Configuring recording for Docker Engine
 
-Following the sample from [Getting Started: Deploy the voice gateway on Docker Engine](deploydocker.md), you can uncomment the configuration in the `docker-compose.yml` file:
+1. Open the **docker/docker-compose.yml** file that you created when you initially [deployed the voice gateway on Docker Engine](deploydocker.md).
+
+1. Uncomment the following configuration in the `docker-compose.yml` file. This configuration enables recording and mounts a local directory where the recordings will be saved.
   ```yaml
   media.relay:
     image: ibmcom/voice-gateway-mr:beta.latest
@@ -24,21 +26,19 @@ Following the sample from [Getting Started: Deploy the voice gateway on Docker E
       - RTP_RELAY_RECORD=true
     volumes:
       - $PWD/recordings:/cgw-media-relay/recordings
-  ```
+  ``` 
+1. Redeploy the voice gateway so that your changes take effect.
 
-This will enable recording and mount a local directory where the recordings will be saved. You will need to re-deploy the Voice Gateway in order for the changes to take place.
-
-You can also copy the recordings to a local path:
+As an alternative to mounting the local directory, you can manually copy recordings to a local path by running the following command:
 
   ```bash
   docker cp voice-gateway-mr:/cgw-media-relay/recordings .
   ```
 
-#### Bluemix
+#### Configuring recording for IBM Containers for Bluemix&reg;
 
-Continuing the sample from [Getting Started: Deploy the voice gateway on IBM Containers for Bluemix](deploybmix.md).
-
-To enable recordings in Bluemix you need to uncomment the environment variable `RTP_RELAY_RECORD` found in the `docker.env` file and re-deploy the Voice Gateway
+1. Open the **bluemix/docker.env** file that you created when you initially [deployed the voice gateway on IBM Containers for Bluemix](deploybmix.md).
+1. To enable recording, uncomment the  `RTP_RELAY_RECORD` environment variable.
 
 ```env
 # =====================================================
@@ -48,29 +48,34 @@ To enable recordings in Bluemix you need to uncomment the environment variable `
 # Uncomment to turn on recording. All call recordings are stored in the CMR \recordings directory.
 RTP_RELAY_RECORD=true
 ```
-In your Bluemix deployment you will need to copy the recordings to a local directory using the `cf ic` command tools:
+1. Redeploy the voice gateway.
+
+To copy the recordings to a local directory, run the `cf ic` command tools:
   ```bash
   cf ic cp voice-gateway-mr:/cgw-media-relay/recordings .
   ```
 
-When deploying to Bluemix, the `deploy.sh` script creates a Docker Volume on IBM Bluemix Containers called `recordingvol` to store your recordings. Therefore, the recordings will remain persistent across multiple deployments. You can see the volume using the `cf ic` command:
+When the voice gateway is deployed to IBM Containers for Bluemix, the **deploy.sh** script creates a Docker Volume on IBM Containers called `recordingvol`, which stores your recordings so that they persist when you redeploy the gateway.
+
+To view the volume, run the following `cf ic` command:
 ```bash
 cf ic volume list
 ```
-You can also set the volume name in `docker.env`
+
+To change the volume name, set the `CF_VOLUME_NAME` variable in your **docker.env** file:
   ```env
   # Set to a name of your choosing
   CF_VOLUME_NAME=recordingvol
 
   ```
-#### Recordings File Format
-  Recordings will be saved as Wav files under the following format:
 
-- File name: `[session-id]-audio.wav`. For example `1234-55678-audio.wav`
-- 8000 Sample rate
-- Mono (1 Audio Channel)
-- Audio Format: **PCM**
+#### Recording file format
 
-Most default audio players support that audio format making it easy to listen to the recording.
+Recordings are saved as WAV files in the following format, which is supported by most default audio players:
 
-The `session-id` used for the file name maps to the SIP Call ID. To modify the *session id* you need to set the `CUSTOM_SIP_SESSION_HEADER` configuration to point to different SIP header which defines the session id to use. [More info on configuration](config.md#sip-orchestrator-environment-variables).
+- File name: `[session-id]-audio.wav`. For example, `1234-55678-audio.wav`
+- Sample rate: 8000 Hz
+- Channels: Mono (1 Audio Channel)
+- Encoding: PCM
+
+The `session-id` used for the file name maps to the SIP Call ID. To modify the `session id`, set the `CUSTOM_SIP_SESSION_HEADER` configuration to point to different SIP header that defines the session ID to use. For more information about configuration, see [SIP Orchestrator configuration environment variables](config.md#sip-orchestrator-environment-variables).
