@@ -2,7 +2,7 @@
 
 These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; on your own Docker engine or an on-premises installation. For cloud deployments, see [Deploying the voice gateway on IBM Containers for Bluemix](deploybmix.md).
 
-**Using Docker Machine?** Configuring the gateway on [Docker Machine](https://docs.docker.com/machine/overview/) is slightly different, as noted in the following steps. Windows users should note that Docker for Windows requires 64-bit Windows 10 Pro, so on earlier version of Windows, you must install Docker Machine.
+**Using Docker Machine?** Configuring the gateway on [Docker Machine](https://docs.docker.com/machine/overview/) is slightly different, as noted in the following steps. Windows users should note that Docker for Windows requires 64-bit Windows 10 Pro, so on earlier versions of Windows, you must install Docker Machine.
 
 #### Prerequisites
 
@@ -23,7 +23,14 @@ These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gate
 
  1. **Docker Machine only:** Before you can log in to Docker, run this command from the command line to set the shell to point to the Docker Engine:
 
-    ```@FOR /f "tokens=*" %i IN ('docker-machine env default --shell cmd') DO @%i```
+  Windows:
+  ```bash
+  @FOR /f "tokens=*" %i IN ('docker-machine env default --shell cmd') DO @%i
+  ```
+  UNIX and Mac OS X:
+  ```bash
+  eval "$(docker-machine env default)"
+  ```
 
  1. Open a terminal window and log in to Docker Hub:
 
@@ -77,6 +84,8 @@ These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gate
   ```Bind for 0.0.0.0:5060 failed: port is already allocated```
 
   Shut down any conflicting applications, and try the command again.
+
+  **Note**: If the command returns `docker-compose: command not found...`, you must install [Docker Compose](https://docs.docker.com/compose/install/).
 
 #### Firewall considerations
 

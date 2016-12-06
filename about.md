@@ -18,15 +18,15 @@ The type of implementation that you choose determines how you set up Voice Gatew
 
 ### Self-service agents
 
-With self-service agents, customers are directed through the gateway to interact with Watson services that you train to provide certain responses. You can optionally enable the Watson services to opt-out to a call center agent by initiating a call transfer through [the API](api.md).
+With self-service agents, customers are directed through the voice gateway to interact with Watson services that you train to provide certain responses. You can optionally enable the Watson services to opt-out to a call center agent by initiating a call transfer through the API.
 
-![](images/selfserviceagent.png)
+![The customer call is routed through the voice gateway, which orchestrates Watson services. If configured, the call can be routed to a human agent.](images/selfserviceagent.png)
 
 ##### Conversation flow with a self-service agent
 
 The following diagram shows how the voice gateway orchestrates the various Watson services to enable a self-service agent. As you can see, utterances flow between the services to result in a conversation with the caller:
 
-![](images/conversation-flow.png)
+![The voice gateway acts as a hub through which the caller and each Watson service communicate.](images/conversation-flow.png)
 
 ##### Features and capabilities for self-service agents
 
@@ -44,9 +44,9 @@ The following diagram shows how the voice gateway orchestrates the various Watso
 
 ### Agent assistants
 
-The voice gateway provides the ability to transcribe caller and callee (e.g. contact-center agent) audio from an active phone call in real time using the SIPREC protocol. This capability requires a Session border controller (SBC) that supports the ability to fork media out to the voice gateway, which is acting as a SIPREC Session Recording Server (SRS).
+The voice gateway provides the ability to transcribe caller and callee (e.g. contact-center agent) audio from an active phone call in real time using the SIPREC protocol. This capability requires a session border controller (SBC) that supports the ability to fork media out to the voice gateway, which is acting as a SIPREC Session Recording Server (SRS).
 
-![](images/agentassistant.png)
+![For agent assistants, the voice gateway forks the call to Watson services, which transcribe and analyze the conversation to provide feedback to a human agent.](images/agentassistant.png)
 
 ### Real-Time Voice Transcription
 
@@ -71,31 +71,31 @@ Voice Gateway for Watson is composed of two separate microservices, the _SIP Orc
    * Orchestrates Watson Speech to Text (STT) and Text to Speech (TTS) services
    * Built in JavaScript using Node Streams architecture
    * Delivered as a Node Module
-   * Configuration via Docker environment variables
+   * Configured via Docker environment variables
 
-The following diagram shows at a high-level how these two microservices combine to provide the full functionality of the Voice Gateway for Watson:
+The following diagram shows at a high level how these two microservices combine to provide the full functionality of Voice Gateway for Watson:
 
-![](images/voice-gateway-microservices.png)
+![The separate microservices in the voice gateway, the SIP Orchestrator and the Media Relay, communicate using APIs](images/voice-gateway-microservices.png)
 
 #### Self-service agent architecture when using a SIP trunk
 
 When connecting to a self-service agent through a SIP trunk, you must configure your SIP trunk to forward INVITE requests to the voice gateway based on its IP address and SIP port.
 
-![](images/arch-selfservice-sip.png)
+![Calls flow through a SIP trunk to the voice gateway, which communicates with Watson services though the API.](images/arch-selfservice-sip.png)
 
-SIP trunks can be used to quickly set up and test the voice gateway by calling your Watson services from the public telephone network. In this case you can simply deploy the voice gateway to a public cloud Docker container service, such as [IBM&reg; Containers for Bluemix&reg;](gettingstarted.md). On-premise enterprise integration typically requires that you configure a session border controller (SBC), which is discussed in the next section.
+SIP trunks can be used to quickly set up and test the voice gateway by calling your Watson services from the public telephone network. In this case you can simply deploy the voice gateway to a public cloud Docker container service, such as [IBM&reg; Containers for Bluemix&reg;](gettingstarted.md). On-premises enterprise integration typically requires that you configure a session border controller (SBC), which is discussed in the next section.
 
 #### Self-service agent architecture when using an SBC
 
 Session border controllers are typically used in cases when you want to enable customers to be transferred to live contact center agents. In a self-service agent where communications flow through a session border controller (SBC), you need to configure the SBC to forward calls to the voice gateway based on its IP address and SIP port. Note that to enable call transfers, the SBC must stay in the call path so that it can handle SIP REFER messages:
 
-![](images/arch-selfservice-sbc.png)
+![Calls flow to an SBC and then to the voice gateway, which communicates with Watson services through the API.](images/arch-selfservice-sbc.png)
 
 #### Agent assistant architecture
 
 For agent assistants, media for calls is forked out to the voice gateway via the SIPREC protocol. Transcriptions from the voice gateway can be accessed via an MQTT message broker.
 
-![](images/arch-agentassistant.png)
+![The call goes to an SBC, which forks the call to the voice gateway and to the human agent.](images/arch-agentassistant.png)
 
 ## Supported protocols
 
