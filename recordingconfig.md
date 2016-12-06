@@ -26,7 +26,7 @@ How you configure audio recording depends on where you deployed the voice gatewa
       - RTP_RELAY_RECORD=true
     volumes:
       - $PWD/recordings:/cgw-media-relay/recordings
-  ``` 
+  ```
 1. Redeploy the voice gateway so that your changes take effect.
 
 As an alternative to mounting the local directory, you can manually copy recordings to a local path by running the following command:
@@ -40,20 +40,23 @@ As an alternative to mounting the local directory, you can manually copy recordi
 1. Open the **bluemix/docker.env** file that you created when you initially [deployed the voice gateway on IBM Containers for Bluemix](deploybmix.md).
 1. To enable recording, uncomment the  `RTP_RELAY_RECORD` environment variable.
 
-```env
-# =====================================================
-# media.relay config
-# =====================================================
-...
-# Uncomment to turn on recording. All call recordings are stored in the CMR \recordings directory.
-RTP_RELAY_RECORD=true
-```
-1. Redeploy the voice gateway.
+  ```env
+  # =====================================================
+  # media.relay config
+  # =====================================================
+  ...
+  # Uncomment to turn on recording.
+  # All call recordings are stored in the Media Relay \recordings directory.
+  RTP_RELAY_RECORD=true
+  ```
+1. Redeploy the voice gateway so that your changes take effect.
 
 To copy the recordings to a local directory, run the `cf ic` command tools:
   ```bash
   cf ic cp voice-gateway-mr:/cgw-media-relay/recordings .
   ```
+
+##### Working with Docker Volume
 
 When the voice gateway is deployed to IBM Containers for Bluemix, the **deploy.sh** script creates a Docker Volume on IBM Containers called `recordingvol`, which stores your recordings so that they persist when you redeploy the gateway.
 
