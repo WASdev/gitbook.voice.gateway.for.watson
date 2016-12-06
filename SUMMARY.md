@@ -10,6 +10,7 @@
 * [Customizing and advanced configuration](advanced.md)
   * [Setting up a Twilio SIP trunk](twilio.md)
   * [Integrating with a contact center](contactctr.md)
+  * [Recording call audio](recordingconfig.md)
   * [Configuring real-time transcription](rttconfig.md)
 * [Troubleshooting](troubleshooting.md)
 * [Reference](reference.md)
