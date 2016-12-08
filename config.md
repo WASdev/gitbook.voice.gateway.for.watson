@@ -5,13 +5,14 @@ All configuration of IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&tr
 * **Docker Engine:** Set the variables in the **docker-compose.yml** file that you create when you first [deploy the voice gateway on Docker Engine](deploydocker.md).
 * **IBM Containers for Bluemix:** Set the variables in the **bluemix/docker.env** file that you create as part of [deploying the voice gateway on IBM Containers](deploybmix.md).
 
-The **docker.env** and **docker-compose.yml** files each contain every item that can be configured for both the SIP Orchestrator and the Media Relay.
+These **docker.env** and **docker-compose.yml** files each contain every item that can be configured for both the SIP Orchestrator and the Media Relay.
 
 Although you can define both the SIP Orchestrator and the Media Relay in a single file, each component uses distinct environment variables, which are outlined in the following sections.
 
 * [SIP Orchestrator environment variables](#sip-orchestrator-environment-variables)
 * [Media Relay environment variables](#media-relay-environment-variables)
 
+**Important:** For any configuration changes to take effect, you must save the configuration file and then redeploy the voice gateway.
 
 ### SIP Orchestrator environment variables
 The following table lists all Docker environment variables that can be used to configure the SIP Orchestrator:
@@ -39,8 +40,8 @@ The following table lists all Docker environment variables that can be used to c
 | CONVERSATION_FAILED_REPLY_MESSAGE | Call being transferred to an agent due to a technical problem. Good bye. | Message streamed to the caller if the Conversation service fails. |
 | TRANSFER_DEFAULT_TARGET | none | Identifies the target transfer to endpoint. Must be valid SIP or tel URI (e.g. sip:10.10.10.10). This is a default transfer target that is used only when a failure occurs and the call transfer target can't be obtained from the Conversation API. |
 | TRANSFER_FAILED_REPLY_MESSAGE | Call transfer to an agent failed. Please try again later. Good bye. | Message streamed to the caller if the call transfer fails. |
-| WHITELIST_FROM_URI | none | Gateway will accept only calls that contain the specified string within the SIP from URI. |
-| WHITELIST_TO_URI | none | Gateway will accept only calls that contain the specified string within the SIP to URI. |
+| WHITELIST_FROM_URI | none | The voice gateway will accept only calls that contain the specified string (such as a phone number) within the SIP from URI. |
+| WHITELIST_TO_URI | none | The voice gateway will accept only calls that contain the specified string (such as a phone number) within the SIP to URI. |
 | MQTT_PLUGIN_ENABLE | false | Set to true to enable the MQTT publisher of transcription events. |
 | MQTT_BROKER_ADDRESS | N/A | IP address of the MQTT broker for publishing Voice Gateway messages. |
 | MQTT_TOPIC_PATH | /voice-gateway/ | Root topic path that voice gateway messages are published to. |
