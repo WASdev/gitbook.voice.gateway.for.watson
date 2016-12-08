@@ -5,13 +5,14 @@ All configuration of IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&tr
 * **Docker Engine:** Set the variables in the **docker-compose.yml** file that you create when you first [deploy the voice gateway on Docker Engine](deploydocker.md).
 * **IBM Containers for Bluemix:** Set the variables in the **bluemix/docker.env** file that you create as part of [deploying the voice gateway on IBM Containers](deploybmix.md).
 
-The **docker.env** and **docker-compose.yml** files each contain every item that can be configured for both the SIP Orchestrator and the Media Relay.
+These **docker.env** and **docker-compose.yml** files each contain every item that can be configured for both the SIP Orchestrator and the Media Relay.
 
 Although you can define both the SIP Orchestrator and the Media Relay in a single file, each component uses distinct environment variables, which are outlined in the following sections.
 
 * [SIP Orchestrator environment variables](#sip-orchestrator-environment-variables)
 * [Media Relay environment variables](#media-relay-environment-variables)
 
+**Important:** For any configuration changes to take effect, you must save the configuration file and then redeploy the voice gateway.
 
 ### SIP Orchestrator environment variables
 The following table lists all Docker environment variables that can be used to configure the SIP Orchestrator:
