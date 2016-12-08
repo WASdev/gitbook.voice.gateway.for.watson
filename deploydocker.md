@@ -15,7 +15,7 @@ These instructions are for setting up IBM&reg; WebSphere&reg; Connect Voice Gate
  * [Watson Text to Speech (self-service only)](https://console.ng.bluemix.net/catalog/services/text-to-speech)
  * [Watson Conversation (self-service only)](https://console.ng.bluemix.net/catalog/services/conversation)
 
- **Important:** Be sure to [program your Conversation service](https://www.ibm.com/watson/developercloud/doc/conversation/t_dialog_build.shtml) with at least a catch-all response so that you can test the gateway.
+ **Important:** Be sure to [build a dialog in your Conversation service](https://www.ibm.com/watson/developercloud/doc/conversation/dialog-build.html). At minimum, your dialog must include a node with the `conversation_start` condition and node with a default response.
 
 * If you plan to deploy the voice gateway behind a firewall and you want to connect to that gateway through a SIP trunk or SIP client that is outside your firewall, see [Firewall considerations](#firewall-considerations).
 
