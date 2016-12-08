@@ -40,8 +40,8 @@ The following table lists all Docker environment variables that can be used to c
 | CONVERSATION_FAILED_REPLY_MESSAGE | Call being transferred to an agent due to a technical problem. Good bye. | Message streamed to the caller if the Conversation service fails. |
 | TRANSFER_DEFAULT_TARGET | none | Identifies the target transfer to endpoint. Must be valid SIP or tel URI (e.g. sip:10.10.10.10). This is a default transfer target that is used only when a failure occurs and the call transfer target can't be obtained from the Conversation API. |
 | TRANSFER_FAILED_REPLY_MESSAGE | Call transfer to an agent failed. Please try again later. Good bye. | Message streamed to the caller if the call transfer fails. |
-| WHITELIST_FROM_URI | none | Gateway will accept only calls that contain the specified string within the SIP from URI. |
-| WHITELIST_TO_URI | none | Gateway will accept only calls that contain the specified string within the SIP to URI. |
+| WHITELIST_FROM_URI | none | The voice gateway will accept only calls that contain the specified string (such as a phone number) within the SIP from URI. |
+| WHITELIST_TO_URI | none | The voice gateway will accept only calls that contain the specified string (such as a phone number) within the SIP to URI. |
 | MQTT_PLUGIN_ENABLE | false | Set to true to enable the MQTT publisher of transcription events. |
 | MQTT_BROKER_ADDRESS | N/A | IP address of the MQTT broker for publishing Voice Gateway messages. |
 | MQTT_TOPIC_PATH | /voice-gateway/ | Root topic path that voice gateway messages are published to. |
