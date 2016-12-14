@@ -52,7 +52,7 @@ The following table lists all Docker environment variables that can be used to c
 
 | Environment variable | Default value |  Description |
 | --- |--- | ---|
-| RTP_PORT| 8080 | The port to listen on. |
+| RTP_PORT| 8080 | The port that the SIP Orchestrator uses to open a WebSocket session. |
 | WATSON_RELAY_SDP_ADDRESS | localhost | Address to use in the Answer SDP for SIP. |
 | RTP_UDP_PORT_RANGE | '16384-16394'|Port range for UDP, set as a String. |
 | CLUSTER_WORKERS | 1 | Number of cluster workers to spawn. Set to 0 for NumCPUS-1. |
