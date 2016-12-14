@@ -8,7 +8,7 @@ Consider how each of these components work together as you attempt to isolate th
 
 ##### Need help?
 
-If you need help, the fastest way to get answers on questions about the voice gateway is to post your questions in the [WASdev dwAnswers forum](https://developer.ibm.com/answers/smartspace/wasdev/).
+If you need help, the fastest way to get answers on questions about the voice gateway is to post a question with the `voicegateway` tag in the [dwAnswers forum](https://developer.ibm.com/answers/topics/voicegateway/).
 
 ## Logging and tracing
 
