@@ -40,21 +40,28 @@ The following table lists all Docker environment variables that can be used to c
 | CONVERSATION_FAILED_REPLY_MESSAGE | Call being transferred to an agent due to a technical problem. Good bye. | Message streamed to the caller if the Conversation service fails. |
 | TRANSFER_DEFAULT_TARGET | none | Identifies the target transfer to endpoint. Must be valid SIP or tel URI (e.g. sip:10.10.10.10). This is a default transfer target that is used only when a failure occurs and the call transfer target can't be obtained from the Conversation API. |
 | TRANSFER_FAILED_REPLY_MESSAGE | Call transfer to an agent failed. Please try again later. Good bye. | Message streamed to the caller if the call transfer fails. |
-| WHITELIST_FROM_URI | none | The voice gateway will accept only calls that contain the specified string (such as a phone number) within the SIP from URI. |
-| WHITELIST_TO_URI | none | The voice gateway will accept only calls that contain the specified string (such as a phone number) within the SIP to URI. |
+| WHITELIST_FROM_URI | none | When defined, the voice gateway will accept only calls that contain the specified string (such as a phone number) within the SIP from URI. |
+| WHITELIST_TO_URI | none | When defined, the voice gateway will accept only calls that contain the specified string (such as a phone number) within the SIP to URI. |
 | MQTT_PLUGIN_ENABLE | false | Set to true to enable the MQTT publisher of transcription events. |
 | MQTT_BROKER_ADDRESS | N/A | IP address of the MQTT broker for publishing Voice Gateway messages. |
 | MQTT_TOPIC_PATH | /voice-gateway/ | Root topic path that voice gateway messages are published to. |
 | LOG_LEVEL | audit | This is the log level for the SIP Orchestrator. Valid values include off, fatal, severe, warning, fine, finest, and all. |
+| PROXY_HOST | none | Defines the host of the proxy server |
+| PROXY_PORT | none | Defines the port of the proxy server |
+| SSL_CLIENT_PKCS12_FILE | none | The location of a PKCS #12 file that contains cryptographic information, such as private keys, certificates, and trusted certificate authorities. |
+| SSL_CLIENT_PASSPHRASE | none | The passphrase that was used to secure the PKCS #12 file. |
 
 ### Media Relay environment variables
+
 The following table lists all Docker environment variables that can be used to configure the Media Relay:
 
 | Environment variable | Default value |  Description |
 | --- |--- | ---|
 | RTP_PORT| 8080 | The port that the SIP Orchestrator uses to open a WebSocket session. |
+| RTP_UDP_PORT_RANGE | '16384-16394'| Port range for UDP, set as a String. |
+| RTP_RELAY_RECORD | false | Set to true to enable recording on the Media Relay. |
+| RTP_RELAY_LOGLEVEL| INFO | The log level. Set the log to INFO, DEBUG, or TRACE. |
 | WATSON_RELAY_SDP_ADDRESS | localhost | Address to use in the Answer SDP for SIP. |
-| RTP_UDP_PORT_RANGE | '16384-16394'|Port range for UDP, set as a String. |
 | CLUSTER_WORKERS | 1 | Number of cluster workers to spawn. Set to 0 for NumCPUS-1. |
 | WATSON_STT_USER | N/A | User name for the Watson Speech to Text service. |
 | WATSON_STT_PASSWORD | N/A | Password for the Watson Speech to Text service.|
@@ -73,5 +80,10 @@ The following table lists all Docker environment variables that can be used to c
 | WATSON_TTS_URL | sdk default| Watson Text to Speech service endpoint URL.|
 | WATSON_TTS_VOICE | en_US_AllisonVoice | Voice used by the Watson Text to Speech service.|
 | WATSON_TTS_MODEL_CUSTOMIZATION_ID | N/A | Used to set a custom voice model for text to speech. |
-|RTP_RELAY_RECORD | false | Set to true to enable recording on the relay. |
-|RTP_RELAY_LOGLEVEL| INFO | The log level. Set the log to INFO, DEBUG, or TRACE. |
+| PROXY_HOST | none | Host of the proxy server |
+| PROXY_PORT | none | Port of the proxy server |
+| PROXY_USERNAME | none | User name for proxy authentication |
+| PROXY_PASSWORD | none | Password for proxy authorization |   
+| SSL_CLIENT_PKCS12_FILE | none | The location of a PKCS #12 file that contains cryptographic information, such as private keys, certificates, and trusted certificate authorities. |
+| SSL_CLIENT_PASSPHRASE | none | The passphrase that was used to secure the PKCS #12 file.|
+| SSL_CLIENT_CA_CERTIFICATE_FILE | none | The location of a PEM file that contains trusted certificate authorities and self-signed certificates. |

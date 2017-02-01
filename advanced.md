@@ -1,6 +1,6 @@
 # Customizing and advanced configuration
 
-After you have a basis setup, you can further configure components in the IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; architecture to provide additional capabilities.
+After you have a basic setup, you can further configure components in the IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade; architecture to provide additional capabilities.
 
 **New to Voice Gateway for Watson?** See the [Getting started](gettingstarted.md) section to quickly get up and running with a self-service agent or agent assistant.
 
