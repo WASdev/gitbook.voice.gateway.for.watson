@@ -1,8 +1,5 @@
-# Reference
+# We've moved!
 
-Find information about configuring IBM&reg; WebSphere&reg; Connect Voice Gateway for Watson&trade;, using the API to exchange information between the voice gateway and Watson services, and further resources.
+The IBM Voice Gateway Beta documentation has moved to its new home in [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SS4U29/).
 
-* [Configuration environment variables](config.md)
-* [API for self-service agents](api.md)
-* [Resources](resources.md)
-* [Beta limitations for Voice Gateway for Watson](limitations.md)
+In IBM Knowledge Center, you'll find updated content for the latest release of the Voice Gateway Beta images.
